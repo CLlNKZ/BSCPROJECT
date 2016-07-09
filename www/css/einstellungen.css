@@ -110,12 +110,26 @@ h1{
 .dropbtn {
     background-color: #fff5f3;
     color: #ff802c;
-    height: 100%;
-    width: 100%;
+	position: absolute;
+    right: 40%;
+    top: 18%;
+    height: 10%;
+    width: 25%;
     font-size: 50px;
     cursor: pointer;
 }
 
+.dropbtn2 {
+    background-color: #fff5f3;
+    color: #ff802c;
+	position: absolute;
+    right: 40%;
+    top: 37.5%;
+    height: 10%;
+    width: 25%;
+    font-size: 50px;
+    cursor: pointer;
+}
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
     background-color: #fff5f3;

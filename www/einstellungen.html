@@ -19,14 +19,23 @@
         <div class="sprache">
             Sprache:
         </div>
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Kartenset 1</button>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="#">Kartenset 2</a>
-                <a href="#">Kartenset 3</a>
-                <a href="#">Kartenset 4</a>
-            </div>
+        <div>
+        <select id="mySelect" class="dropbtn">
+ 		<option>Kartenset 1</option>
+        <option>Kartenset 2</option>
+  		<option>Kartenset 3</option>
+		</select>
         </div>
+         <select id="mySelect" class="dropbtn2">
+ 		<option>Klicken</option>
+        <option>Wischen</option>
+		</select>
+        <div>
+        </div>
+        </div>
+        
+       
+      
        <div>
             <div>
                 <a class="speichernbutton">OK</a>
@@ -37,29 +46,6 @@
             </div>
         </div>
         
-        <script>
-        /* When the user clicks on the button, 
-        toggle between hiding and showing the dropdown content */
-        function myFunction() {
-         document.getElementById("myDropdown").classList.toggle("show");
-        }
-
-        //s Close the dropdown menu if the user clicks outside of it
-        window.onclick = function(event) {
-         if (!event.target.matches('.dropbtn')) {
-         var dropdowns = document.getElementsByClassName("dropdown-content");
-         var i;
-         for (i = 0; i < dropdowns.length; i++) {
-         var openDropdown = dropdowns[i];
-         if (openDropdown.classList.contains('show')) {
-             document.getElementsByName('Kartenset 1').innerHTML = 'Absatz durch JavaScript geändert';
-         
-        openDropdown.classList.remove('show');
-             }
-             }
-             }
-        }
-    </script>
     </body>
     
     
