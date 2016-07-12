@@ -8,7 +8,7 @@ alert("Table created successfully");
 function(error) {
 alert("Error occurred while creating the table.");
 });
-}
+});
 
 myDB.transaction(function(transaction) {
 transaction.executeSql('CREATE TABLE IF NOT EXISTS spieler (Spieler_ID integer primary key, name text)', [],
@@ -19,3 +19,4 @@ function(error) {
 alert("Error occurred while creating the table.");
 });
 });
+
