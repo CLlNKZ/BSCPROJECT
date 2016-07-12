@@ -74,9 +74,97 @@ h1{
     width: 30%;
     height:35%;
 }
-.texteinstellungen{
+.kartenset{
     position: absolute;
-    left: 2.5%;
-    top: 20%;
+    color: #fff5f3;
+    left: 5%;
+    top: 18%;
+    font-size: 50px;
+}
+
+.geste{
+    position: absolute;
+    color: #fff5f3;
+    left: 5%;
+    top: 37.5%;
+    font-size: 50px;
+}
+
+.speicherstand{
+    position: absolute;
+    color: #fff5f3;
+    left: 5%;
+    bottom: 37.5%;
+    font-size: 50px;
+}
+
+.sprache{
+    position: absolute;
+    color: #fff5f3;
+    left: 5%;
+    bottom: 15%;
+    font-size: 50px;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #fff5f3;
+    color: #ff802c;
+	position: absolute;
+    right: 40%;
+    top: 18%;
+    height: 10%;
+    width: 25%;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.dropbtn2 {
+    background-color: #fff5f3;
+    color: #ff802c;
+	position: absolute;
+    right: 40%;
+    top: 37.5%;
+    height: 10%;
+    width: 25%;
+    font-size: 50px;
+    cursor: pointer;
+}
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #fff5f3;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: absolute;
+    left: 35%;
+    top: 15%;
+    width: 30%;
+    height: 15%;
+    display: inline-block;
     
 }
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
