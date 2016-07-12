@@ -1,0 +1,75 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "appNAME"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "appNAME"
+        }
+    },
+    "dependent_plugins": {}
+}
