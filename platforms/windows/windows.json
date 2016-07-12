@@ -9,16 +9,16 @@
                 "parents": {
                     "/Package/Capabilities": [
                         {
-                            "xml": "<DeviceCapability Name=\"webcam\" />",
-                            "count": 2
-                        },
-                        {
                             "xml": "<DeviceCapability Name=\"location\" />",
                             "count": 1
                         },
                         {
                             "xml": "<DeviceCapability Name=\"microphone\" />",
-                            "count": 2
+                            "count": 1
+                        },
+                        {
+                            "xml": "<DeviceCapability Name=\"webcam\" />",
+                            "count": 1
                         }
                     ]
                 }
