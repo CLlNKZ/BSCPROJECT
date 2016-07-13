@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/platforms/android/CordovaLib/CordovaLib.iml" filepath="$PROJECT_DIR$/platforms/android/CordovaLib/CordovaLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/platforms/android/android.iml" filepath="$PROJECT_DIR$/platforms/android/android.iml" />
       <module fileurl="file://$PROJECT_DIR$/platforms/android/CordovaLib/build/generated/source/buildConfig/buildConfig.iml" filepath="$PROJECT_DIR$/platforms/android/CordovaLib/build/generated/source/buildConfig/buildConfig.iml" />
+      <module fileurl="file://$PROJECT_DIR$/platforms/android/build/generated/source/buildConfig/buildConfig1.iml" filepath="$PROJECT_DIR$/platforms/android/build/generated/source/buildConfig/buildConfig1.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/cordova-plugin-battery-status/src/cordova-plugin-battery-status.iml" filepath="$PROJECT_DIR$/plugins/cordova-plugin-battery-status/src/cordova-plugin-battery-status.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/cordova-plugin-camera/src/cordova-plugin-camera.iml" filepath="$PROJECT_DIR$/plugins/cordova-plugin-camera/src/cordova-plugin-camera.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/cordova-plugin-contacts/src/cordova-plugin-contacts.iml" filepath="$PROJECT_DIR$/plugins/cordova-plugin-contacts/src/cordova-plugin-contacts.iml" />

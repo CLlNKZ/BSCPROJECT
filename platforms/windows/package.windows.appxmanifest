@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-    <Identity Name="com.private.BSCPROJECT" Publisher="CN=$username$" Version="1.0.0.0" />
+    <Identity Name="com.bscproject.DoubleCardOn" Publisher="CN=$username$" Version="1.0.0.0" />
     <Properties>
-        <DisplayName>appNAME</DisplayName>
-        <PublisherDisplayName>PhoneGap Team</PublisherDisplayName>
+        <DisplayName>DoubleCardOn</DisplayName>
+        <PublisherDisplayName>Thomas Poganitsch
+		Sonja Wallner</PublisherDisplayName>
         <Logo>images\StoreLogo.png</Logo>
     </Properties>
     <Prerequisites>
@@ -14,8 +15,8 @@
         <Resource Language="x-generate" />
     </Resources>
     <Applications>
-        <Application Id="com.private.BSCPROJECT" StartPage="www/index.html">
-            <m2:VisualElements BackgroundColor="#464646" Description="CordovaApp" DisplayName="appNAME" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square30x30Logo="images\Square30x30Logo.png">
+        <Application Id="com.bscproject.DoubleCardOn" StartPage="www/index.html">
+            <m2:VisualElements BackgroundColor="#464646" Description="CordovaApp" DisplayName="DoubleCardOn" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square30x30Logo="images\Square30x30Logo.png">
                 <m2:DefaultTile Square310x310Logo="images\Square310x310Logo.png" Square70x70Logo="images\Square70x70Logo.png" Wide310x150Logo="images\Wide310x150Logo.png">
                     <m2:ShowNameOnTiles>
                         <m2:ShowOn Tile="square150x150Logo" />

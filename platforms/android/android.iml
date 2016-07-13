@@ -13,10 +13,9 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="classes" level="project" />
-    <orderEntry type="library" name="sqlite-connector" level="project" />
-    <orderEntry type="library" name="sqlite-connector1" level="project" />
     <orderEntry type="library" name="classes1" level="project" />
+    <orderEntry type="library" name="sqlite-connector" level="project" />
+    <orderEntry type="library" name="classes" level="project" />
     <orderEntry type="module" module-name="CordovaLib" />
     <orderEntry type="module" module-name="buildConfig" />
   </component>

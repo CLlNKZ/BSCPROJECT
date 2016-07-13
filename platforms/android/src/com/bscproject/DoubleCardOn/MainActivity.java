@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.private.BSCPROJECT;
+package com.bscproject.DoubleCardOn;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

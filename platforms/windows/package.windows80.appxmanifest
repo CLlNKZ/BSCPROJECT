@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-    <Identity Name="com.private.BSCPROJECT" Publisher="CN=$username$" Version="1.0.0.0" />
+    <Identity Name="com.bscproject.DoubleCardOn" Publisher="CN=$username$" Version="1.0.0.0" />
     <Properties>
-        <DisplayName>appNAME</DisplayName>
-        <PublisherDisplayName>PhoneGap Team</PublisherDisplayName>
+        <DisplayName>DoubleCardOn</DisplayName>
+        <PublisherDisplayName>Thomas Poganitsch
+		Sonja Wallner</PublisherDisplayName>
         <Logo>images\storelogo.png</Logo>
     </Properties>
     <Prerequisites>
@@ -14,8 +15,8 @@
         <Resource Language="x-generate" />
     </Resources>
     <Applications>
-        <Application Id="com.private.BSCPROJECT" StartPage="www/index.html">
-            <VisualElements BackgroundColor="#464646" Description="CordovaApp" DisplayName="appNAME" ForegroundText="light" Logo="images\Square150x150Logo.png" SmallLogo="images\Square30x30Logo.png">
+        <Application Id="com.bscproject.DoubleCardOn" StartPage="www/index.html">
+            <VisualElements BackgroundColor="#464646" Description="CordovaApp" DisplayName="DoubleCardOn" ForegroundText="light" Logo="images\Square150x150Logo.png" SmallLogo="images\Square30x30Logo.png">
                 <DefaultTile ShowName="allLogos" WideLogo="images\Wide310x150Logo.png" />
                 <SplashScreen Image="images\splashscreen.png" />
                 <InitialRotationPreference>

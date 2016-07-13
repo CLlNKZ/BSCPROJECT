@@ -19,4 +19,3 @@ function(error) {
 alert("Error occurred while creating the table.");
 });
 });
-
