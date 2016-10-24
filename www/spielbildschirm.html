@@ -8,7 +8,7 @@ var variable = window.name;
 if (variable=='') 
 { 
 var num_rows = 2; 
-var num_columns = 4; 
+var num_columns = 3; 
 } 
 else 
 {
@@ -30,7 +30,6 @@ var image_number;
 var first_clicked_image=0;
 var attempts=0;
 var allow_click=1;
-var covered=new Image; covered.src="covered.gif";
 
 var bild=new Array(); 
 
@@ -58,7 +57,14 @@ bild[3]["nick"].src="img/animals/alligator1.png";
 bild[3]["avatar"]=new Image; 
 bild[3]["avatar"].src="img/animals/alligator2.png";
 
-var image_numbers = new Array(); for (var t=0; t < num_fields; t++) { image_numbers[('M'+t)]=new Array(); image_numbers[('M'+t)]["zahl"]=t; image_numbers[('M'+t)]["status"]=0; }
+var covered=new Image; covered.src=bild[0]["nick"].src;
+
+var image_numbers = new Array(); 
+for (var t=0; t < num_fields; t++) { 
+image_numbers[('M'+t)]=new Array(); 
+image_numbers[('M'+t)]["zahl"]=t; 
+image_numbers[('M'+t)]["status"]=0; 
+}
 
 var temp_numbers= new Array(); function init() {
 
@@ -68,6 +74,7 @@ for (var t=0; t < num_fields; t++) { do
 { random_number = Math.round(Math.random() * (num_fields)); } while (random_number > (num_fields-1));
 
  var temp=temp_numbers[('M'+t)]; temp_numbers[('M'+t)]=temp_numbers[('M'+random_number)]; temp_numbers[('M'+random_number)]=temp; } for (t=0; t < num_fields; t++) { image_numbers[('M'+t)]["zahl"]=temp_numbers[('M'+t)]; } }
+
 
 function close(pic1,pic2) { window.document.images[pic1].src=covered.src; image_numbers[pic1]["status"]=0; window.document.images[pic2].src=covered.src; image_numbers[pic2]["status"]=0; allow_click=1; }
 
@@ -100,7 +107,7 @@ image_number='M'+(x*num_columns+y);
         <link rel="stylesheet" type="text/css" href="css/spielbildschirm.css" />
     </head>
     <body>
-        <div>
+        <div align="center">
           <SCRIPT type="text/javascript">
 		  init();
 		  
@@ -108,12 +115,15 @@ image_number='M'+(x*num_columns+y);
 		  { 
 		  	for (var j=0; j < num_columns; j++) 
 			{ 
-			document.write('<IMG src="'+covered.src+'" onClick="if (allow_click==1) look('+i+','+j+')" name="M'+(i*num_columns+j)+'">'); } document.write('<BR>'); 
+			document.write('<IMG src="'+covered.src+'" onClick="if (allow_click==1) look('+i+','+j+')" name="M'+(i*num_columns+j)+'">'); 
 			} 
+			document.write('<BR>'); 
+			
+		  }
+		  
           </SCRIPT>
-          
-          
-            <a href="index.html" class="zurückbuttonspielbildschirm">Zurück</a>
+         
+            <!--<a href="index.html" class="zurückbuttonspielbildschirm">Zurück</a>-->
         </div>
     </body>
     
