@@ -4,6 +4,7 @@
 
 <SCRIPT type="text/javascript"> 
 
+
 var variable = window.name; 
 if (variable=='') 
 { 
@@ -57,7 +58,12 @@ bild[3]["nick"].src="img/animals/alligator1.png";
 bild[3]["avatar"]=new Image; 
 bild[3]["avatar"].src="img/animals/alligator2.png";
 
-var covered=new Image; covered.src=bild[0]["nick"].src;
+/*var covered = new Array();
+	for (var i=0; i<3; i++){
+		covered[i] = new Image;*/
+var covered = new Image;
+covered.src="img/animals/anaconda1.png"; 
+		
 
 var image_numbers = new Array(); 
 for (var t=0; t < num_fields; t++) { 
@@ -96,6 +102,7 @@ image_number='M'+(x*num_columns+y);
 	
 	if (opened_pics==num_pics) { var seconds=Math.floor(eval( ( (end_time.getTime() - start_time.getTime()) ) / 1000)); alert("Congratulations, you won the game in "+attempts+" turns and "+seconds+" seconds!"); } }
 	
+	
 	var game;
 	
 	function loadmemory() { var start=0; if (document.spiel.settings[0].checked == true) { game="r4c4"; start=1; } if (document.spiel.settings[1].checked == true) { game="r4c6"; start=1; } if (document.spiel.settings[2].checked == true) { game="r6c6"; start=1; } window.name=game; location.reload(); } </SCRIPT>
@@ -116,7 +123,7 @@ image_number='M'+(x*num_columns+y);
 		  	for (var j=0; j < num_columns; j++) 
 			{ 
 			document.write('<IMG src="'+covered.src+'" onClick="if (allow_click==1) look('+i+','+j+')" name="M'+(i*num_columns+j)+'">'); 
-			} 
+			}
 			document.write('<BR>'); 
 			
 		  }
