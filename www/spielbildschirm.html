@@ -14,7 +14,6 @@ var timer_start, timer_ende, timer_gestartet = "no";
 var anzahl_versuche=0;
 var angeklicktes_bild=0;
 
-
 var pic1;
 var pic2;
 var firstimage=0;
@@ -130,6 +129,16 @@ function look(x,y) {
 	
 	}
 	
+	/*------------------------------open pics--------------------------*/
+	function openpics(x,y) {
+
+		image_number=(x*spaltenanzahl+y);
+
+		pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
+  			if ((image_numbers[image_number]["zahl"] % 2)==0) window.document.images[image_number].src=bild[pic1]["B"].src; 
+  			else window.document.images[image_number].src=bild[pic1]["A"].src; 
+	}
+	/*--------------------------------End Open Pics-----------------------------------------*/
 	
 	var game;
 	
@@ -145,7 +154,7 @@ function look(x,y) {
         <div align="center">
           <SCRIPT type="text/javascript">
 		  init();
-		  
+		  /*
 		  for (var i=0; i < zeilenanzahl; i++) 
 		  { 
 		  	for (var j=0; j < spaltenanzahl; j++) 
@@ -156,6 +165,15 @@ function look(x,y) {
 			document.write('<BR>'); 
 			
 		  }
+		  */
+		  for (var i=0; i < zeilenanzahl; i++) 
+		  { 
+		  	for (var j=0; j < spaltenanzahl; j++) 
+			{ 
+			document.write('<IMG src="'+covered.src+'" onLoad="openpics('+i+','+j+')" name="M'+(i*spaltenanzahl+j)+'">'); 
+			}
+			document.write('<BR>'); 
+		  }  
 		  
           </SCRIPT>
          
@@ -163,5 +181,4 @@ function look(x,y) {
         </div>-->
     </body>
     
-
 </html>
