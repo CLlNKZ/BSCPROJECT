@@ -85,12 +85,25 @@ for (i=0; t < feldanzahl; i++) {
 
 /*------------------------------------------------function init() ende------------------------------------------*/
 
-	function schließen(pic1,pic2) { 
-		window.document.images[pic1].src=covered.src; 
+	function nothing(pic1,pic2) { 
+		//window.document.images[pic1].src=covered.src; 
 		image_numbers[pic1]["status"]=0; 
-		window.document.images[pic2].src=covered.src; 
+		//window.document.images[pic2].src=covered.src; 
 		image_numbers[pic2]["status"]=0; 
 		allow_click=1; 
+	}
+	
+	
+	function anfang(x,y){
+		image_number=(x*spaltenanzahl+y);
+
+ 		if ((firstimage==0) && (image_numbers[image_number]["status"]<3)) {
+  		pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
+  		if ((image_numbers[image_number]["zahl"] % 2)==0) window.document.images[image_number].src=bild[pic1]["B"].src; 
+  		else window.document.images[image_number].src=bild[pic1]["A"].src; 
+ }
+ 
+	
 	}
 
 	function look(x,y) {
@@ -109,9 +122,7 @@ for (i=0; t < feldanzahl; i++) {
   allow_click=0; 
   firstimage=1; 
   pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
-  if ((image_numbers[image_number]["zahl"] % 2)==0) window.document.images[image_number].src=bild[pic1]["B"].src; 
-  else window.document.images[image_number].src=bild[pic1]["A"].src; 
-  image_numbers[image_number]["status"]=3; 
+  //image_numbers[image_number]["status"]=3; 
   first_clicked_image=image_number; 
   allow_click=1; 
  }
@@ -122,13 +133,11 @@ for (i=0; t < feldanzahl; i++) {
 	firstimage=0; 
 	anzahl_versuche++; 
 	pic2=Math.floor(image_numbers[image_number]["zahl"]/2); 
-	if ((image_numbers[image_number]["zahl"] % 2)==0) window.document.images[image_number].src=bild[pic2]["B"].src; 
-	else window.document.images[image_number].src=bild[pic2]["A"].src; image_numbers[image_number]["status"]=10; 
-	if (pic1!=pic2) window.setTimeout("schließen(first_clicked_image,image_number)",500); 
+	if (pic1!=pic2) window.setTimeout("nothing(first_clicked_image,image_number)",500); 
 	else { 
 	angeklicktes_bild++; 
 	allow_click=1;
-	 }
+	}
 	
 	if (angeklicktes_bild==bildpaare) timer_ende=new Date(); 
 	}
@@ -140,18 +149,6 @@ for (i=0; t < feldanzahl; i++) {
 	} 
 	
 	}
-	
-	/*------------------------------open pics--------------------------*/
-	function openpics(x,y) {
-
-		image_number=(x*spaltenanzahl+y);
-
-		pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
-  			if ((image_numbers[image_number]["zahl"] % 2)==0) window.document.images[image_number].src=bild[pic1]["B"].src; 
-  			else window.document.images[image_number].src=bild[pic1]["A"].src; 
-		
-	}
-	/*--------------------------------End Open Pics-----------------------------------------*/
 	
 	var game;
 	
@@ -167,29 +164,16 @@ for (i=0; t < feldanzahl; i++) {
         <div align="center">
           <SCRIPT type="text/javascript">
 		  init();
-		  //Funktionierendes Spiel mit verdeckten Karten
 		  
 		  for (var i=0; i < zeilenanzahl; i++) 
 		  { 
 		  	for (var j=0; j < spaltenanzahl; j++) 
 			{ 
-			document.write('<IMG src="'+covered.src+'" onClick="if (allow_click==1) look('+i+','+j+')" name="M'+(i*spaltenanzahl+j)+'">'); 
+			document.write('<IMG src="'+covered.src+'" OnLoad="anfang('+i+','+j+')" onClick="if (allow_click==1) look('+i+','+j+')" name="M'+(i*spaltenanzahl+j)+'">'); 
 			}
 			document.write('<BR>'); 
 		  }
 		  
-		  
-		  //Hier würden Bilder am Anfang an geöffnet angezeigt werden, jedoch funktioniert dann das Spiel nicht mehr
-		  /*
-		  for (var i=0; i < zeilenanzahl; i++) 
-		  { 
-		  	for (var j=0; j < spaltenanzahl; j++) 
-			{
-			document.write('<IMG src="'+covered.src+'" OnLoad="openpics('+i+','+j+')" name="M'+(i*spaltenanzahl+j)+'">'); 
-			}
-			document.write('<BR>'); 
-		  }  
-		  */
           </SCRIPT>
          
             <a href="index.html" class="zurückbuttonspielbildschirm">Zurück</a>
