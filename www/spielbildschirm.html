@@ -47,9 +47,9 @@ bild[3]["A"].src="img/animals/alligator1.png";
 bild[3]["B"]=new Image; 
 bild[3]["B"].src="img/animals/alligator2.png";
 
-/*Hier müsste man irgendwie anstatt das Cover die Bilder übergeben */
 var covered = new Image;
-covered.src="img/animals/alligator1.png"; 
+covered.src="img/icons/right.png"; 
+var openpic1 = new Image;
 
 var image_numbers = new Array(); 
 for (var t=0; t < feldanzahl; t++) { 
@@ -81,7 +81,6 @@ for (var i=0; i < feldanzahl; i++) {
  	} 
 }
 
-
 	function schließen(pic1,pic2) { 
 		window.document.images[pic1].src=covered.src; 
 		image_numbers[pic1]["status"]=0; 
@@ -90,7 +89,7 @@ for (var i=0; i < feldanzahl; i++) {
 		allow_click=1; 
 	}
 
-function look(x,y) {
+	function look(x,y) {
 
 	//Timer aktivieren und auf true setzen
 	if (timer_gestartet=='no') { 
@@ -100,7 +99,7 @@ function look(x,y) {
 
 	image_number=(x*spaltenanzahl+y);
 
- if ((firstimage==0) && (image_numbers[image_number]["status"]<10)) {
+ 	if ((firstimage==0) && (image_numbers[image_number]["status"]<10)) {
  
   allow_click=0; 
   firstimage=1; 
@@ -137,6 +136,7 @@ function look(x,y) {
 		pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
   			if ((image_numbers[image_number]["zahl"] % 2)==0) window.document.images[image_number].src=bild[pic1]["B"].src; 
   			else window.document.images[image_number].src=bild[pic1]["A"].src; 
+		
 	}
 	/*--------------------------------End Open Pics-----------------------------------------*/
 	
@@ -154,27 +154,31 @@ function look(x,y) {
         <div align="center">
           <SCRIPT type="text/javascript">
 		  init();
-		  /*
+		 
+		  
+		  //Funktionierendes Spiel mit verdeckten Karten
+		  
 		  for (var i=0; i < zeilenanzahl; i++) 
 		  { 
 		  	for (var j=0; j < spaltenanzahl; j++) 
 			{ 
 			document.write('<IMG src="'+covered.src+'" onClick="if (allow_click==1) look('+i+','+j+')" name="M'+(i*spaltenanzahl+j)+'">'); 
-			
 			}
 			document.write('<BR>'); 
-			
 		  }
-		  */
+		  
+		  
+		  //Hier würden Bilder am Anfang an geöffnet angezeigt werden, jedoch funktioniert dann das Spiel nicht mehr
+		  /*
 		  for (var i=0; i < zeilenanzahl; i++) 
 		  { 
 		  	for (var j=0; j < spaltenanzahl; j++) 
-			{ 
+			{
 			document.write('<IMG src="'+covered.src+'" onLoad="openpics('+i+','+j+')" name="M'+(i*spaltenanzahl+j)+'">'); 
 			}
 			document.write('<BR>'); 
 		  }  
-		  
+		  */
           </SCRIPT>
          
             <a href="index.html" class="zurückbuttonspielbildschirm">Zurück</a>
