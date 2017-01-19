@@ -18,13 +18,14 @@ var pic1;
 var pic2;
 var firstimage=0;
 var image_number;
+var image_number_first_click;
 var first_clicked_image=0;
 var allow_click=1;
 
 var bild=new Array(); 
 
 bild[0]=new Array(2); 
-bild[0]["A"]=new Image; 
+bild[0]["A"]=new Image;
 bild[0]["A"].src="img/animals/alpaca1.png"; 
 bild[0]["B"]=new Image; 
 bild[0]["B"].src="img/animals/alpaca2.png";
@@ -49,7 +50,7 @@ bild[3]["B"].src="img/animals/alligator2.png";
 
 var covered = new Image;
 covered.src="img/icons/right.png"; 
-var openpic1 = new Image;
+//var openpic1 = new Image;
 
 var image_numbers = new Array(); 
 for (var t=0; t < feldanzahl; t++) { 
@@ -89,25 +90,27 @@ for (i=0; t < feldanzahl; i++) {
 		//window.document.images[pic1].src=covered.src; 
 		image_numbers[pic1]["status"]=0; 
 		//window.document.images[pic2].src=covered.src; 
+		//window.document.images[pic2].src.style.borderColor = "black";
 		image_numbers[pic2]["status"]=0; 
+		
 		allow_click=1; 
 	}
 	
-	
+	//Überfülle covered.src mit den Bildern
 	function anfang(x,y){
 		image_number=(x*spaltenanzahl+y);
 
  		if ((firstimage==0) && (image_numbers[image_number]["status"]<3)) {
   		pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
-  		if ((image_numbers[image_number]["zahl"] % 2)==0) window.document.images[image_number].src=bild[pic1]["B"].src; 
-  		else window.document.images[image_number].src=bild[pic1]["A"].src; 
- }
- 
-	
+  		if ((image_numbers[image_number]["zahl"] % 2)==0) {
+			window.document.images[image_number].src=bild[pic1]["B"].src; 
+			}
+  		else window.document.images[image_number].src=bild[pic1]["A"].src;
+ 		}
+		
 	}
 
 	function look(x,y) {
-
 	//Timer aktivieren und auf true setzen
 	
 	if (timer_gestartet=='no') { 
@@ -116,27 +119,37 @@ for (i=0; t < feldanzahl; i++) {
 	}
 	
 	image_number=(x*spaltenanzahl+y);
+	
 
+	//Wenn das erste Bild angeklickt wird
  	if ((firstimage==0) && (image_numbers[image_number]["status"]<3)) {
- 
-  allow_click=0; 
-  firstimage=1; 
-  pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
-  //image_numbers[image_number]["status"]=3; 
-  first_clicked_image=image_number; 
-  allow_click=1; 
- }
+  	allow_click=0; 
+  	firstimage=1;
+	//Angeklicktes Bild wird grün
+	window.document.images[image_number].style.borderColor = "orange"; 
+  	pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
+  	first_clicked_image=image_number; 
+  	allow_click=1; 
+	//Wenn dies das erste Bild ist, diese image_number speichern, falls 2. falsch ist, auch dieses wieder auf schwarzen Rand zurücksetzen kann
+	image_number_first_click = image_number;
+ 	}
   
-   else if ((firstimage==1) && (image_numbers[image_number]["status"]<3)) {
-   
+  	//Wenn bereits ein Bild angeklickt ist und das zweite hinzukommt
+    else if ((firstimage==1) && (image_numbers[image_number]["status"]<3)) {
+	window.document.images[image_number].style.borderColor = "orange"; 
     allow_click=0; 
 	firstimage=0; 
 	anzahl_versuche++; 
 	pic2=Math.floor(image_numbers[image_number]["zahl"]/2); 
-	if (pic1!=pic2) window.setTimeout("nothing(first_clicked_image,image_number)",500); 
+	if (pic1!=pic2) {
+	window.setTimeout("nothing(first_clicked_image,image_number)",500);
+	window.document.images[image_number].style.borderColor = "black";
+	window.document.images[image_number_first_click].style.borderColor = "black";  
+	}
 	else { 
 	angeklicktes_bild++; 
 	allow_click=1;
+	
 	}
 	
 	if (angeklicktes_bild==bildpaare) timer_ende=new Date(); 
@@ -147,7 +160,6 @@ for (i=0; t < feldanzahl; i++) {
 	var zeit=Math.floor(eval( ( (timer_ende.getTime() - timer_start.getTime()) ) / 1000)); 
 	alert("Gratulation, du hast das Spiel mit "+anzahl_versuche+" Versuchen und in "+zeit+" Sekunden geschafft!"); 
 	} 
-	
 	}
 	
 	var game;
@@ -169,7 +181,8 @@ for (i=0; t < feldanzahl; i++) {
 		  { 
 		  	for (var j=0; j < spaltenanzahl; j++) 
 			{ 
-			document.write('<IMG src="'+covered.src+'" OnLoad="anfang('+i+','+j+')" onClick="if (allow_click==1) look('+i+','+j+')" name="M'+(i*spaltenanzahl+j)+'">'); 
+			
+			document.write('<IMG src="'+covered.src+'" border="3" OnLoad="anfang('+i+','+j+')" onClick="if (allow_click==1) look('+i+','+j+')" name="M'+(i*spaltenanzahl+j)+'">'); 
 			}
 			document.write('<BR>'); 
 		  }
