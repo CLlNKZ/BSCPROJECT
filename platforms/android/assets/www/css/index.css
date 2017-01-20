@@ -22,7 +22,15 @@ body {
         /* offset horizontal: half of image width and text area width */
     }
 }
-
+@media largescreen and (max-width: 800px){
+	
+}
+@media averagescreen and (width: 600px){
+	
+}
+@media smallscreen and (width:320px){
+	
+}
 @keyframes fade {
     from { opacity: 1.0; }
     50% { opacity: 0.4; }
