@@ -18,13 +18,14 @@ var pic1;
 var pic2;
 var firstimage=0;
 var image_number;
+var image_number_first_click;
 var first_clicked_image=0;
 var allow_click=1;
 
 var bild=new Array(); 
 
 bild[0]=new Array(2); 
-bild[0]["A"]=new Image; 
+bild[0]["A"]=new Image;
 bild[0]["A"].src="img/animals/alpaca1.png"; 
 bild[0]["B"]=new Image; 
 bild[0]["B"].src="img/animals/alpaca2.png";
@@ -47,9 +48,9 @@ bild[3]["A"].src="img/animals/alligator1.png";
 bild[3]["B"]=new Image; 
 bild[3]["B"].src="img/animals/alligator2.png";
 
-/*Hier müsste man irgendwie anstatt das Cover die Bilder übergeben */
 var covered = new Image;
-covered.src="img/animals/alligator1.png"; 
+covered.src="img/icons/right.png"; 
+//var openpic1 = new Image;
 
 var image_numbers = new Array(); 
 for (var t=0; t < feldanzahl; t++) { 
@@ -60,6 +61,7 @@ image_numbers[t]["status"]=0;
 
 var temp_numbers= new Array(); 
 
+/*----------------------------------------------------function init() start-------------------------------------------------*/
 function init() {
 
 for (var i=0; i < feldanzahl; i++) { 
@@ -67,7 +69,7 @@ temp_numbers[i]=i;
 }
 
 for (var i=0; i < feldanzahl; i++) { 
-	do{ 
+	do{
 	random_number = Math.round(Math.random() * (feldanzahl)); 
 	} 
 	while (random_number > (feldanzahl-1));
@@ -75,70 +77,90 @@ for (var i=0; i < feldanzahl; i++) {
  	var temp=temp_numbers[i]; 
  	temp_numbers[i]=temp_numbers[(random_number)]; 
  	temp_numbers[(random_number)]=temp; 
- 	} 
- 	for (i=0; t < feldanzahl; i++) { 
+} 
+
+for (i=0; t < feldanzahl; i++) { 
  	image_numbers[i]["zahl"]=temp_numbers[i]; 
- 	} 
-}
+} 	
+}	
 
+/*------------------------------------------------function init() ende------------------------------------------*/
 
-	function schließen(pic1,pic2) { 
-		window.document.images[pic1].src=covered.src; 
+	function nothing(pic1,pic2) { 
+		//window.document.images[pic1].src=covered.src; 
 		image_numbers[pic1]["status"]=0; 
-		window.document.images[pic2].src=covered.src; 
+		//window.document.images[pic2].src=covered.src; 
+		//window.document.images[pic2].src.style.borderColor = "black";
 		image_numbers[pic2]["status"]=0; 
+		
 		allow_click=1; 
 	}
+	
+	//Überfülle covered.src mit den Bildern
+	function anfang(x,y){
+		image_number=(x*spaltenanzahl+y);
 
-function look(x,y) {
+ 		if ((firstimage==0) && (image_numbers[image_number]["status"]<3)) {
+  		pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
+  		if ((image_numbers[image_number]["zahl"] % 2)==0) {
+			window.document.images[image_number].src=bild[pic1]["B"].src; 
+			}
+  		else window.document.images[image_number].src=bild[pic1]["A"].src;
+ 		}
+		
+	}
 
+	function look(x,y) {
 	//Timer aktivieren und auf true setzen
+	
 	if (timer_gestartet=='no') { 
 		timer_gestartet='yes';
 		timer_start=new Date();  
 	}
-
+	
 	image_number=(x*spaltenanzahl+y);
+	
 
- if ((firstimage==0) && (image_numbers[image_number]["status"]<10)) {
- 
-  allow_click=0; 
-  firstimage=1; 
-  pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
-  if ((image_numbers[image_number]["zahl"] % 2)==0) window.document.images[image_number].src=bild[pic1]["B"].src; 
-  else window.document.images[image_number].src=bild[pic1]["A"].src; 
-  image_numbers[image_number]["status"]=10; 
-  first_clicked_image=image_number; 
-  allow_click=1; 
- }
+	//Wenn das erste Bild angeklickt wird
+ 	if ((firstimage==0) && (image_numbers[image_number]["status"]<3)) {
+  	allow_click=0; 
+  	firstimage=1;
+	//Angeklicktes Bild wird grün
+	window.document.images[image_number].style.borderColor = "orange"; 
+  	pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
+  	first_clicked_image=image_number; 
+  	allow_click=1; 
+	//Wenn dies das erste Bild ist, diese image_number speichern, falls 2. falsch ist, auch dieses wieder auf schwarzen Rand zurücksetzen kann
+	image_number_first_click = image_number;
+ 	}
   
-   else if ((firstimage==1) && (image_numbers[image_number]["status"]<3)) {
-   
-    allow_click=0; firstimage=0; anzahl_versuche++; pic2=Math.floor(image_numbers[image_number]["zahl"]/2); if ((image_numbers[image_number]["zahl"] % 2)==0) window.document.images[image_number].src=bild[pic2]["B"].src; else window.document.images[image_number].src=bild[pic2]["A"].src; image_numbers[image_number]["status"]=10; 
-	if (pic1!=pic2) window.setTimeout("schließen(first_clicked_image,image_number)",500); 
+  	//Wenn bereits ein Bild angeklickt ist und das zweite hinzukommt
+    else if ((firstimage==1) && (image_numbers[image_number]["status"]<3)) {
+	window.document.images[image_number].style.borderColor = "orange"; 
+    allow_click=0; 
+	firstimage=0; 
+	anzahl_versuche++; 
+	pic2=Math.floor(image_numbers[image_number]["zahl"]/2); 
+	if (pic1!=pic2) {
+	window.setTimeout("nothing(first_clicked_image,image_number)",500);
+	window.document.images[image_number].style.borderColor = "black";
+	window.document.images[image_number_first_click].style.borderColor = "black";  
+	}
 	else { 
-	angeklicktes_bild++; allow_click=1;
-	 }
+	angeklicktes_bild++; 
+	allow_click=1;
 	
-	if (angeklicktes_bild==bildpaare) timer_ende=new Date(); }
+	}
 	
+	if (angeklicktes_bild==bildpaare) timer_ende=new Date(); 
+	}
+	
+	//Wenn alle Bildpaare gefunden sind
 	if (angeklicktes_bild==bildpaare) { 
 	var zeit=Math.floor(eval( ( (timer_ende.getTime() - timer_start.getTime()) ) / 1000)); 
 	alert("Gratulation, du hast das Spiel mit "+anzahl_versuche+" Versuchen und in "+zeit+" Sekunden geschafft!"); 
 	} 
-	
 	}
-	
-	/*------------------------------open pics--------------------------*/
-	function openpics(x,y) {
-
-		image_number=(x*spaltenanzahl+y);
-
-		pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
-  			if ((image_numbers[image_number]["zahl"] % 2)==0) window.document.images[image_number].src=bild[pic1]["B"].src; 
-  			else window.document.images[image_number].src=bild[pic1]["A"].src; 
-	}
-	/*--------------------------------End Open Pics-----------------------------------------*/
 	
 	var game;
 	
@@ -154,26 +176,16 @@ function look(x,y) {
         <div align="center">
           <SCRIPT type="text/javascript">
 		  init();
-		  /*
+		  
 		  for (var i=0; i < zeilenanzahl; i++) 
 		  { 
 		  	for (var j=0; j < spaltenanzahl; j++) 
 			{ 
-			document.write('<IMG src="'+covered.src+'" onClick="if (allow_click==1) look('+i+','+j+')" name="M'+(i*spaltenanzahl+j)+'">'); 
 			
+			document.write('<IMG src="'+covered.src+'" border="3" OnLoad="anfang('+i+','+j+')" onClick="if (allow_click==1) look('+i+','+j+')" name="M'+(i*spaltenanzahl+j)+'">'); 
 			}
 			document.write('<BR>'); 
-			
 		  }
-		  */
-		  for (var i=0; i < zeilenanzahl; i++) 
-		  { 
-		  	for (var j=0; j < spaltenanzahl; j++) 
-			{ 
-			document.write('<IMG src="'+covered.src+'" onLoad="openpics('+i+','+j+')" name="M'+(i*spaltenanzahl+j)+'">'); 
-			}
-			document.write('<BR>'); 
-		  }  
 		  
           </SCRIPT>
          
