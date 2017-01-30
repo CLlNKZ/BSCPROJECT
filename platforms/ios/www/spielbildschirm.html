@@ -6,66 +6,67 @@
 
 window.name = "DoubleCardOn";
 
-var feldanzahl, zeilenanzahl, spaltenanzahl;
+var feldanzahl, zeilenanzahl, spaltenanzahl, anzahl_bildpaare;
 feldanzahl = 6;
 zeilenanzahl = 2;
 spaltenanzahl = 3;
-var bildpaare=3;
-var timer_start, timer_ende, timer_gestartet = "no";
-var anzahl_versuche=0;
-var angeklicktes_bild=0;
+anzahl_bildpaare=3;
 
-var pic1;
-var pic2;
+var timer_start, timer_ende, timer_gestartet = "no";
+var pic1, pic2;
+
+//Merken welches Bild das erste bzw. zweite war, damit der Orange Rand zugeordnet werden kann
+var image_number_first_click, image_number_second_click;
+
+//Wird hochgezählt, damit man weiß, wieviele Versuche notwendig waren, um alle Paare richtig zuzuordnen
+var anzahl_versuche=0;
+
+//Später für Überprüfung ob die Anzahl der richtig ausgewählten Paare gleich 3 ist
+var richtig_angeklickte_paare=0;
+
+//Je nachdem, welches Bildset ausgewählt ist, muss dies in die Variable bildset hineingeschrieben werden (der Ordner)
+var bildset = "animals";
+
 var firstimage=0;
 var image_number;
-var image_number_first_click;
+
 var first_clicked_image=0;
 var allow_click=1;
 
 var bild=new Array(); 
 
-var rnd = Math.floor((Math.random() * 2) + 1); 
+var datensatz_bilder = new Array(1,2,3,4,5,6,7,8,9,10);
+var rnd1, rnd2, rnd3;
 
-if(rnd == 1){
+rnd1 = Math.floor((Math.random() * datensatz_bilder.length/2) + 1);  
+
+do{
+rnd2 = Math.floor((Math.random() * datensatz_bilder.length/2) + 1); 
+}
+while(rnd1 == rnd2);
+
+do{
+rnd3 = Math.floor((Math.random() * datensatz_bilder.length/2) + 1); 
+}
+while(rnd3 == rnd2 || rnd3 == rnd1);
+
 bild[0]=new Array(2); 
 bild[0]["A"]=new Image;
-bild[0]["A"].src="img/animals/alpaca1.png"; 
+bild[0]["A"].src="img/" + bildset + "/" + rnd1 + "_1.png"; 
 bild[0]["B"]=new Image; 
-bild[0]["B"].src="img/animals/alpaca2.png";
+bild[0]["B"].src="img/" + bildset + "/" + rnd1 + "_2.png"; 
 
 bild[1]=new Array(2); 
 bild[1]["A"]=new Image; 
-bild[1]["A"].src="img/animals/albatross1.png"; 
+bild[1]["A"].src="img/" + bildset + "/" + rnd2 + "_1.png"; 
 bild[1]["B"]=new Image; 
-bild[1]["B"].src="img/animals/albatross2.png";
+bild[1]["B"].src="img/" + bildset + "/" + rnd2 + "_2.png"; 
 
 bild[2]=new Array(2); 
 bild[2]["A"]=new Image; 
-bild[2]["A"].src="img/animals/anaconda1.png"; 
+bild[2]["A"].src="img/" + bildset + "/" + rnd3 + "_1.png"; 
 bild[2]["B"]=new Image; 
-bild[2]["B"].src="img/animals/anaconda2.png";
-}
-else if(rnd == 2){
-
-bild[0]=new Array(2); 
-bild[0]["A"]=new Image; 
-bild[0]["A"].src="img/animals/alligator1.png"; 
-bild[0]["B"]=new Image; 
-bild[0]["B"].src="img/animals/alligator2.png";
-
-bild[1]=new Array(2); 
-bild[1]["A"]=new Image; 
-bild[1]["A"].src="img/animals/bat1.png"; 
-bild[1]["B"]=new Image; 
-bild[1]["B"].src="img/animals/bat2.png";
-
-bild[2]=new Array(2); 
-bild[2]["A"]=new Image; 
-bild[2]["A"].src="img/animals/baboon1.png"; 
-bild[2]["B"]=new Image; 
-bild[2]["B"].src="img/animals/baboon2.png";
-}
+bild[2]["B"].src="img/" + bildset + "/" + rnd3 + "_2.png"; 
 
 var covered = new Image;
 covered.src="img/icons/right.png"; 
@@ -107,9 +108,9 @@ for (i=0; i < feldanzahl; i++) {
 
 	function nothing(pic1,pic2) { 
 		//window.document.images[pic1].src=covered.src; 
-		image_numbers[pic1]["status"]=0; 
+		//image_numbers[pic1]["status"]=0; 
 		//window.document.images[pic2].src=covered.src; 
-		image_numbers[pic2]["status"]=0; 
+		//image_numbers[pic2]["status"]=0; 
 		
 		allow_click=1; 
 	}
@@ -143,46 +144,80 @@ for (i=0; i < feldanzahl; i++) {
  	if ((firstimage==0) && (image_numbers[image_number]["status"]<3)) {
   	allow_click=0; 
   	firstimage=1;
-	//Angeklicktes Bild wird grün
+	//Angeklicktes Bild wird grün;
+	if(window.document.images[image_number].style.borderColor == "orange"){
+	image_number_first_click = 100;
+	}
+	else{
 	window.document.images[image_number].style.borderColor = "orange"; 
+	//Wenn dies das erste Bild ist, diese image_number speichern, falls 2. falsch ist, auch dieses wieder auf schwarzen Rand zurücksetzen kann
+	image_number_first_click = image_number;
+	}
+	
   	pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
   	first_clicked_image=image_number; 
   	allow_click=1; 
-	//Wenn dies das erste Bild ist, diese image_number speichern, falls 2. falsch ist, auch dieses wieder auf schwarzen Rand zurücksetzen kann
-	image_number_first_click = image_number;
+	
  	}
   
   	//Wenn bereits ein Bild angeklickt ist und das zweite hinzukommt
     else if ((firstimage==1) && (image_numbers[image_number]["status"]<3)) {
+		//Wenn das 2.Bild bereits als richtiges Paar Orange markiert wurde
+		if(window.document.images[image_number].style.borderColor == "orange"){
+		image_number_second_click = 100;
+		}
+		else{
+		image_number_second_click = 0;
+		}
+		
+		//Wenn das Bildpaar bereits als richtig markiert wurde, muss der Counter verringert werden, weil er bei richtigem Paar unten erhöht wird
+		if(window.document.images[image_number].style.borderColor == "orange" && window.document.images[image_number_first_click].style.borderColor == "orange"){
+		richtig_angelickte_paare--;
+		}
 	window.document.images[image_number].style.borderColor = "orange"; 
     allow_click=0; 
 	firstimage=0; 
 	anzahl_versuche++; 
 	pic2=Math.floor(image_numbers[image_number]["zahl"]/2); 
 	if (pic1!=pic2) {
-	window.setTimeout("nothing(first_clicked_image,image_number)",500);
-	window.document.images[image_number].style.borderColor = "black";
-	window.document.images[image_number_first_click].style.borderColor = "black";  
+		window.setTimeout("nothing(first_clicked_image,image_number)",500);
+		
+		if(image_number_first_click != 100){
+		window.document.images[image_number_first_click].style.borderColor = "black";  
+		}
+		if(image_number_second_click != 100){
+		window.document.images[image_number].style.borderColor = "black";
+		}
+		
 	}
 	else { 
-	angeklicktes_bild++; 
+	richtig_angeklickte_paare++; 
 	allow_click=1;
-	
 	}
 	
-	if (angeklicktes_bild==bildpaare) timer_ende=new Date(); 
+	if (richtig_angeklickte_paare==anzahl_bildpaare) timer_ende=new Date(); 
 	}
 	
 	//Wenn alle Bildpaare gefunden sind
-	if (angeklicktes_bild==bildpaare) { 
+	if (richtig_angeklickte_paare==anzahl_bildpaare) { 
 	var zeit=Math.floor(eval( ( (timer_ende.getTime() - timer_start.getTime()) ) / 1000)); 
 	alert("Gratulation, du hast das Spiel mit "+anzahl_versuche+" Versuchen und in "+zeit+" Sekunden geschafft!"); 
+	window.location.reload();
 	} 
+	
 	}
 	
 	var game;
-	
-	function loadmemory() { var start=0; if (document.spiel.settings[0].checked == true) { game="r4c4"; start=1; } if (document.spiel.settings[1].checked == true) { game="r4c6"; start=1; } if (document.spiel.settings[2].checked == true) { game="r6c6"; start=1; } window.name="DoubleCardON"; location.reload(); } </SCRIPT>
+	/*
+	function loadmemory() { 
+	var start=0; 
+	//hier könnten wir rausladen, welches Set ausgewählt ist?
+	if (document.spiel.settings[0].checked == true) { game="r4c4"; start=1; } 
+	if (document.spiel.settings[1].checked == true) { game="r4c6"; start=1; } 
+	if (document.spiel.settings[2].checked == true) { game="r6c6"; start=1; } 
+	window.name="DoubleCardON"; location.reload(); 
+	} 
+	*/</SCRIPT>
 
 
         <title>Spielbildschirm</title>
