@@ -38,15 +38,15 @@ var bild=new Array();
 var datensatz_bilder = new Array(1,2,3,4,5,6,7,8,9,10);
 var rnd1, rnd2, rnd3;
 
-rnd1 = Math.floor((Math.random() * datensatz_bilder.length/2) + 1);  
+rnd1 = Math.floor((Math.random() * datensatz_bilder.length) + 1);  
 
 do{
-rnd2 = Math.floor((Math.random() * datensatz_bilder.length/2) + 1); 
+rnd2 = Math.floor((Math.random() * datensatz_bilder.length) + 1); 
 }
 while(rnd1 == rnd2);
 
 do{
-rnd3 = Math.floor((Math.random() * datensatz_bilder.length/2) + 1); 
+rnd3 = Math.floor((Math.random() * datensatz_bilder.length) + 1); 
 }
 while(rnd3 == rnd2 || rnd3 == rnd1);
 
