@@ -42,7 +42,8 @@ body {
     cursor: none;	
     text-decoration: none;
     text-align:center;
-    font: 50px Arial, sans-serif;
+    /*font: 50px Arial, sans-serif;*/
+	font: 13vh Arial, sans-serif;
     padding: 80px 0px 0px 0px;
     box-sizing: border-box;
     border-radius: 5px;
@@ -62,7 +63,8 @@ body {
     cursor: none;	
     text-decoration: none;
     text-align:center;
-    font: 50px Arial, sans-serif;
+    /*font: 50px Arial, sans-serif;*/
+	font: 13vh Arial, sans-serif;
     padding: 70px 0px 0px 0px;
     box-sizing: border-box;
     border-radius: 5px;

@@ -20,7 +20,6 @@
                 <uap:SplashScreen Image="images\splashscreen.png" />
                 <uap:DefaultTile ShortName="appNAME" Square310x310Logo="images\Square310x310Logo.png" Square71x71Logo="images\Square71x71Logo.png" Wide310x150Logo="images\Wide310x150Logo.png" />
                 <uap:InitialRotationPreference>
-                    <uap:Rotation Preference="portrait" />
                     <uap:Rotation Preference="landscape" />
                     <uap:Rotation Preference="landscapeFlipped" />
                 </uap:InitialRotationPreference>

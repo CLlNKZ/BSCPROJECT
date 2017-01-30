@@ -5,10 +5,11 @@
 <SCRIPT type="text/javascript"> 
 
 window.name = "DoubleCardOn";
- 
-var zeilenanzahl = 2; 
-var spaltenanzahl = 3; 
-var feldanzahl=6;
+
+var feldanzahl, zeilenanzahl, spaltenanzahl;
+feldanzahl = 6;
+zeilenanzahl = 2;
+spaltenanzahl = 3;
 var bildpaare=3;
 var timer_start, timer_ende, timer_gestartet = "no";
 var anzahl_versuche=0;
@@ -24,6 +25,9 @@ var allow_click=1;
 
 var bild=new Array(); 
 
+var rnd = Math.floor((Math.random() * 2) + 1); 
+
+if(rnd == 1){
 bild[0]=new Array(2); 
 bild[0]["A"]=new Image;
 bild[0]["A"].src="img/animals/alpaca1.png"; 
@@ -41,16 +45,30 @@ bild[2]["A"]=new Image;
 bild[2]["A"].src="img/animals/anaconda1.png"; 
 bild[2]["B"]=new Image; 
 bild[2]["B"].src="img/animals/anaconda2.png";
+}
+else if(rnd == 2){
 
-bild[3]=new Array(2); 
-bild[3]["A"]=new Image; 
-bild[3]["A"].src="img/animals/alligator1.png"; 
-bild[3]["B"]=new Image; 
-bild[3]["B"].src="img/animals/alligator2.png";
+bild[0]=new Array(2); 
+bild[0]["A"]=new Image; 
+bild[0]["A"].src="img/animals/alligator1.png"; 
+bild[0]["B"]=new Image; 
+bild[0]["B"].src="img/animals/alligator2.png";
+
+bild[1]=new Array(2); 
+bild[1]["A"]=new Image; 
+bild[1]["A"].src="img/animals/bat1.png"; 
+bild[1]["B"]=new Image; 
+bild[1]["B"].src="img/animals/bat2.png";
+
+bild[2]=new Array(2); 
+bild[2]["A"]=new Image; 
+bild[2]["A"].src="img/animals/baboon1.png"; 
+bild[2]["B"]=new Image; 
+bild[2]["B"].src="img/animals/baboon2.png";
+}
 
 var covered = new Image;
 covered.src="img/icons/right.png"; 
-//var openpic1 = new Image;
 
 var image_numbers = new Array(); 
 for (var t=0; t < feldanzahl; t++) { 
@@ -62,6 +80,7 @@ image_numbers[t]["status"]=0;
 var temp_numbers= new Array(); 
 
 /*----------------------------------------------------function init() start-------------------------------------------------*/
+
 function init() {
 
 for (var i=0; i < feldanzahl; i++) { 
@@ -79,7 +98,7 @@ for (var i=0; i < feldanzahl; i++) {
  	temp_numbers[(random_number)]=temp; 
 } 
 
-for (i=0; t < feldanzahl; i++) { 
+for (i=0; i < feldanzahl; i++) { 
  	image_numbers[i]["zahl"]=temp_numbers[i]; 
 } 	
 }	
@@ -90,7 +109,6 @@ for (i=0; t < feldanzahl; i++) {
 		//window.document.images[pic1].src=covered.src; 
 		image_numbers[pic1]["status"]=0; 
 		//window.document.images[pic2].src=covered.src; 
-		//window.document.images[pic2].src.style.borderColor = "black";
 		image_numbers[pic2]["status"]=0; 
 		
 		allow_click=1; 
@@ -99,15 +117,15 @@ for (i=0; t < feldanzahl; i++) {
 	//Überfülle covered.src mit den Bildern
 	function anfang(x,y){
 		image_number=(x*spaltenanzahl+y);
-
  		if ((firstimage==0) && (image_numbers[image_number]["status"]<3)) {
-  		pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
-  		if ((image_numbers[image_number]["zahl"] % 2)==0) {
+		//bei Image_numbers[image_number hier sind nur 4 eingespeichert!!!]
+		pic1=Math.floor(image_numbers[image_number]["zahl"]/2);  
+		//pic1=Math.floor(image_numbers[image_number*2]["zahl"]/2);
+		if ((image_numbers[image_number]["zahl"] % 2)==0) {
 			window.document.images[image_number].src=bild[pic1]["B"].src; 
 			}
   		else window.document.images[image_number].src=bild[pic1]["A"].src;
  		}
-		
 	}
 
 	function look(x,y) {

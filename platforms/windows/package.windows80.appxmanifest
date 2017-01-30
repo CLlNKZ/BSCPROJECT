@@ -20,7 +20,6 @@
                 <DefaultTile ShowName="allLogos" WideLogo="images\Wide310x150Logo.png" />
                 <SplashScreen Image="images\splashscreen.png" />
                 <InitialRotationPreference>
-                    <Rotation Preference="portrait" />
                     <Rotation Preference="landscape" />
                     <Rotation Preference="landscapeFlipped" />
                 </InitialRotationPreference>
