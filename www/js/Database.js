@@ -1,71 +1,107 @@
-window.alert("Start");
+//create DB + Tables
+var db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' }, function (db) {
 
-var db;
-var shortName = 'DoubleCardOndbDB';
-var version = '1.0';
-var displayName = 'DoubleCardOndbDB';
-var maxSize = 8192;
-
-window.alert("Variables");
-
-// Wait for device API libraries to load
-//
-function onLoad() {
-	window.alert("Inload");
-    document.addEventListener("deviceready", onDeviceReady, false);
-}
-window.alert("Ready");
-
-
-function onDeviceReady() {
-	window.alert("DVReady");
-    var db = window.sqlitePlugin.openDatabase(shortName, version, displayName, maxSize);
-    db.transaction(populateDB, errorCB, successCB);
-}
-
-// this is called when an error happens in a transaction
-function errorHandler(transaction, error) {
-   alert('Error: ' + error.message + ' code: ' + error.code);
-
-}
-
-// this is called when a successful transaction happens
-function successCallBack() {
-   alert("DEBUGGING: success");
-
-}
-
-function nullHandler(){};
-
-db.transaction(function(tx){
-
-   tx.executeSql( 'CREATE TABLE IF NOT EXISTS Statistik(Spiel_ID INTEGER PRIMAR KEY, Spieler TEXT NOT NULL, Datum TEXT NOT NULL, Versuche INTEGER NOT NULL, Kartenset TEXT NOT NULL)',
-[],nullHandler,errorHandler);
- },errorHandler,successCallBack);
-
-
-
-
-/*var myDB = window.sqlitePlugin.openDatabase({name: "database.db", location: 'default'});
-window.alert("After DB");
-myDB.transaction(function(transaction) {
-transaction.executeSql('CREATE TABLE IF NOT EXISTS statistik (Spiel_ID integer primary key, Spieler text, Datum text, Versuche integer, Kartenset string)', [],
-function(tx, result) {
-window.alert("Table created successfully");
-},
-function(error) {
-window.alert("Error occurred while creating the table.");
-});
+    db.transaction(function (tx) {
+		
+    tx.executeSql('CREATE TABLE Einstellungen (spieler, kartenset)');
+	tx.executeSql('CREATE TABLE PermStatistik (spieler, kartenset, besterVersuch)');
+	tx.executeSql('CREATE TABLE SpielerStatus (spieler, kartenset, status, punkte)');
+	tx.executeSql('CREATE TABLE Einstellungen (spielID, spieler, kartenset, versuche)');
+}, function (error) {
+    console.log('transaction error: ' + error.message);
+}, function () {
+    console.log('transaction ok');
 });
 
-myDB.transaction(function(transaction) {
-transaction.executeSql('CREATE TABLE IF NOT EXISTS spieler (Spieler_ID integer primary key, name text)', [],
-function(tx, result) {
-window.alert("Table created successfully");
-},
-function(error) {
-window.alert("Error occurred while creating the table.");
-});
+}, function (error) {
+    console.log('Open database ERROR: ' + JSON.stringify(error));
 });
 
-window.alert("Worked");*/
+//Add rows to Einstellungen
+function addItemEinstellungen(spieler, kartenset) {
+
+    db.transaction(function (tx) {
+
+        var query = "INSERT INTO Einstellungen (spieler, kartenset) VALUES (?,?)";
+
+        tx.executeSql(query, [spieler, kartenset], function(tx, res) {
+            console.log("insertId: " + res.insertId + " -- probably 1");
+            console.log("rowsAffected: " + res.rowsAffected + " -- should be 1");
+        },
+        function(tx, error) {
+            console.log('INSERT error: ' + error.message);
+        });
+    }, function(error) {
+        console.log('transaction error: ' + error.message);
+    }, function() {
+        console.log('transaction ok');
+    });
+}
+
+//Add rows to PermStatistik
+function addItemPermStatistik(spieler, kartenset, besterVersuch) {
+
+    db.transaction(function (tx) {
+
+        var query = "INSERT INTO Einstellungen (spieler, kartenset) VALUES (?,?,?)";
+
+        tx.executeSql(query, [spieler, kartenset, besterVersuch], function(tx, res) {
+            console.log("insertId: " + res.insertId + " -- probably 1");
+            console.log("rowsAffected: " + res.rowsAffected + " -- should be 1");
+        },
+        function(tx, error) {
+            console.log('INSERT error: ' + error.message);
+        });
+    }, function(error) {
+        console.log('transaction error: ' + error.message);
+    }, function() {
+        console.log('transaction ok');
+    });
+}
+
+//Add rows to SpielerStatus
+
+function addItemSpielerStatus(spieler, kartenset, status, punkte) {
+
+    db.transaction(function (tx) {
+
+        var query = "INSERT INTO SpielerStatus (spieler, kartenset, status, punkte) VALUES (?,?,?,?)";
+
+        tx.executeSql(query, [spieler, kartenset, status, punkte], function(tx, res) {
+            console.log("insertId: " + res.insertId + " -- probably 1");
+            console.log("rowsAffected: " + res.rowsAffected + " -- should be 1");
+        },
+        function(tx, error) {
+            console.log('INSERT error: ' + error.message);
+        });
+    }, function(error) {
+        console.log('transaction error: ' + error.message);
+    }, function() {
+        console.log('transaction ok');
+    });
+}
+
+//Add rows to Statistik
+
+function addItemStatistik(spielID, spieler, kartenset, versuche) {
+
+    db.transaction(function (tx) {
+
+        var query = "INSERT INTO SpielerStatus (spieler, kartenset, status, punkte) VALUES (?,?,?,?)";
+
+        tx.executeSql(query, [spielID, spieler, kartenset, versuche], function(tx, res) {
+            console.log("insertId: " + res.insertId + " -- probably 1");
+            console.log("rowsAffected: " + res.rowsAffected + " -- should be 1");
+        },
+        function(tx, error) {
+            console.log('INSERT error: ' + error.message);
+        });
+    }, function(error) {
+        console.log('transaction error: ' + error.message);
+    }, function() {
+        console.log('transaction ok');
+    });
+}
+
+//Read rows from Einstellungen
+
