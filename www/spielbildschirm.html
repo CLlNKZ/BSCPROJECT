@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/spielbildschirm.css" />
     </head>
     <body>
+    <div></br></div>
         <div align="center">
           <SCRIPT type="text/javascript">
 		  init();
@@ -17,15 +18,13 @@
 		  	for (var j=0; j < spaltenanzahl; j++) 
 			{ 
 			
-			document.write('<IMG src="'+covered.src+'" border="3" OnLoad="anfang('+i+','+j+')" onClick="if (allow_click==1) look('+i+','+j+')" name="M'+(i*spaltenanzahl+j)+'">'); 
+			document.write('<IMG src="'+covered.src+'" width="25%" height="20%" border="3" OnLoad="anfang('+i+','+j+')" onClick="if (allow_click==1) look('+i+','+j+')" name="M'+(i*spaltenanzahl+j)+'">'); 
 			}
 			document.write('<BR>'); 
 		  }
 		  
           </SCRIPT>
-         
-            <a href="index.html" class="zurückbuttonspielbildschirm">Zurück</a>
-        </div>-->
+        </div>
     </body>
     
 </html>
