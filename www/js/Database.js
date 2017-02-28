@@ -90,3 +90,54 @@ function updateItemEinstellungen(spieler, kartenset) {
         console.log('transaction ok');
     });
 }
+
+//Update rows SpielerStatus
+function updateItemSpielerStatus(ID_spieler, kartenset, status, punkte) {
+ 
+    db.transaction(function (tx) {
+
+        var query = "UPDATE SpielerStatus SET kartenset = ?, status = ?, punkte = ? WHERE ID_spieler = ?";
+
+        tx.executeSql(query, [ID_spieler, kartenset, status, punkte], function(tx, res) {
+            console.log("insertId: " + res.insertId);
+            console.log("rowsAffected: " + res.rowsAffected);
+        },
+        function(tx, error) {
+            console.log('UPDATE error: ' + error.message);
+        });
+    }, function(error) {
+        console.log('transaction error: ' + error.message);
+    }, function() {
+        console.log('transaction ok');
+    });
+}
+
+//Read
+
+//Delete Statistik
+function deleteItemsStatistik() {
+ 
+    db.transaction(function (tx) {
+
+        var query = "DELETE FROM Statistik";
+
+        tx.executeSql(query, [], function(tx, res) {
+            console.log("rowsAffected: " + res.rowsAffected);
+        },
+        function(tx, error) {
+            console.log('Delete error: ' + error.message);
+        });
+    }, function(error) {
+        console.log('transaction error: ' + error.message);
+    }, function() {
+        console.log('transaction ok');
+    });
+}
+//Close DB
+function closeDB() {
+    db.close(function () {
+        console.log("DB closed!");
+    }, function (error) {
+        console.log("Error closing DB:" + error.message);
+    });
+}
