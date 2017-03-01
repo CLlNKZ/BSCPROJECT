@@ -10,7 +10,7 @@ document.addEventListener('deviceready', function() {
 db.transaction(function(tx) {
     tx.executeSql('CREATE TABLE IF NOT EXISTS Einstellungen (ID_Einstellungen INTEGER PRIMARY KEY, spieler TEXT, kartenset TEXT)');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS PermStatistik (spieler TEXT, kartenset TEXT, besterVersuch INTEGER, UNIQUE(spieler, kartenset))');
-	tx.executeSql('CREATE TABLE IF NOT EXISTS SpielerStatus (ID_spieler TEXT PRIMARY KEY, kartenset TEXT, status INTEGER, punkte INTEGER)');
+	tx.executeSql('CREATE TABLE IF NOT EXISTS SpielerStatus (ID_spieler TEXT PRIMARY KEY, kartenset TEXT, SPstatus INTEGER, punkte INTEGER)');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS Statistik (ID_Statistik INTEGER PRIMARY KEY, spieler TEXT, kartenset TEXT, versuche INTEGER)');
   }, function(error) {
     console.log('Transaction ERROR: ' + error.message);
@@ -92,13 +92,13 @@ function updateItemEinstellungen(spieler, kartenset) {
 }
 
 //Update rows SpielerStatus
-function updateItemSpielerStatus(ID_spieler, kartenset, status, punkte) {
+function updateItemSpielerStatus(ID_spieler, kartenset, SPstatus, punkte) {
  
     db.transaction(function (tx) {
 
-        var query = "UPDATE SpielerStatus SET kartenset = ?, status = ?, punkte = ? WHERE ID_spieler = ?";
+        var query = "UPDATE SpielerStatus SET kartenset = ?, SPstatus = ?, punkte = ? WHERE ID_spieler = ?";
 
-        tx.executeSql(query, [ID_spieler, kartenset, status, punkte], function(tx, res) {
+        tx.executeSql(query, [ID_spieler, kartenset, SPstatus, punkte], function(tx, res) {
             console.log("insertId: " + res.insertId);
             console.log("rowsAffected: " + res.rowsAffected);
         },
@@ -112,8 +112,75 @@ function updateItemSpielerStatus(ID_spieler, kartenset, status, punkte) {
     });
 }
 
-//Read
+//Read Statistik
+function getDataStatistik(spieler, kartenset) {
 
+    db.transaction(function (tx) {
+
+        var query = "SELECT ID_Statistik, spieler, kartenset, versuche FROM Statistik WHERE spieler = ? AND kartenset= ? ORDER BY ID_Statistik DESC";
+
+        tx.executeSql(query, [spieler, kartenset], function (tx, resultSet) {
+
+            for(var x = 0; x < resultSet.rows.length; x++) {
+                console.log(resultSet.rows.item(x).ID_Statistik +
+                    ", " + resultSet.rows.item(x).versuche);
+            }
+        },
+        function (tx, error) {
+            console.log('SELECT error: ' + error.message);
+        });
+    }, function (error) {
+        console.log('transaction error: ' + error.message);
+    }, function () {
+        console.log('transaction ok');
+    });
+}
+
+//Read PermStatistik
+function getDataPermStatistik(spieler, kartenset) {
+
+    db.transaction(function (tx) {
+
+        var query = "SELECT besterVersuch FROM PermStatistik WHERE spieler = ? AND kartenset = ?";
+
+        tx.executeSql(query, [spieler, kartenset], function (tx, resultSet) {
+
+                console.log(resultSet.rows.item(0).besterVersuch);
+        },
+        function (tx, error) {
+            console.log('SELECT error: ' + error.message);
+        });
+    }, function (error) {
+        console.log('transaction error: ' + error.message);
+    }, function () {
+        console.log('transaction ok');
+    });
+}
+//Read SpielerStatus
+function getDataStatus(spieler) {
+
+    db.transaction(function (tx) {
+
+        var query = "SELECT ID_spieler, kartenset, SPstatus, punkte FROM SpielerStatus WHERE ID_spieler = ?";
+
+        tx.executeSql(query, [spieler], function (tx, resultSet) {
+
+            for(var x = 0; x < resultSet.rows.length; x++) {
+                console.log(resultSet.rows.item(x).ID_spieler +
+                    ", " + resultSet.rows.item(x).kartenset + 
+					", "+ resultSet.rows.item(x).SPstatus + 
+					", "+ resultSet.rows.item(x).punkte);
+            }
+        },
+        function (tx, error) {
+            console.log('SELECT error: ' + error.message);
+        });
+    }, function (error) {
+        console.log('transaction error: ' + error.message);
+    }, function () {
+        console.log('transaction ok');
+    });
+}
 //Delete Statistik
 function deleteItemsStatistik() {
  
