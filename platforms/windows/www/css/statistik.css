@@ -43,8 +43,8 @@ body {
     text-decoration: none;
     text-align:center;
     /*font: 50px Arial, sans-serif;*/
-	font: 13vh Arial, sans-serif;
-    padding: 80px 0px 0px 0px;
+	font: 15vh Arial, sans-serif;
+    padding: 5% 0% 10% 0%;
     box-sizing: border-box;
     border-radius: 5px;
     border-color: black;
@@ -64,8 +64,8 @@ body {
     text-decoration: none;
     text-align:center;
     /*font: 50px Arial, sans-serif;*/
-	font: 13vh Arial, sans-serif;
-    padding: 70px 0px 0px 0px;
+	font: 15vh Arial, sans-serif;
+    padding: 5% 0% 10% 0%;
     box-sizing: border-box;
     border-radius: 5px;
     border-color: black;

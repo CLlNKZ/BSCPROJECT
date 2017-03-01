@@ -38,9 +38,9 @@ body {
     cursor: none;	
     text-decoration: none;
     text-align:center;
-   /* font: 50px Arial, sans-serif;*/
-	font: 100px Arial, sans-serif;
-    padding: 5% 0% 10% 0%;
+   /* font: 10vh Arial, sans-serif;*/
+	font: 10vh Arial, sans-serif;
+    padding: 7% 0% 10% 0%;
     box-sizing: border-box;
     border-radius: 5px;
     border-color: black;
@@ -63,9 +63,9 @@ h1{
     cursor: none;	
     text-decoration: none;
     text-align:center;
-   /* font: 50px Arial, sans-serif; */
-	font: 100px Arial, sans-serif;
-    padding: 5% 0% 10% 0%;
+   /* font: 10vh Arial, sans-serif; */
+	font: 10vh Arial, sans-serif;
+    padding: 7% 0% 10% 0%;
     box-sizing: border-box;
     border-radius: 5px;
     border-color: black;
@@ -80,32 +80,32 @@ h1{
     position: absolute;
     color: #fff5f3;
     left: 5%;
-    top: 18%;
-    font-size: 50px;
+    top: 12.5%;
+    font: 10vh Arial, sans-serif;
 }
 
 .geste{
     position: absolute;
     color: #fff5f3;
     left: 5%;
-    top: 37.5%;
-    font-size: 50px;
+    top: 35%;
+    font: 10vh Arial, sans-serif;
 }
 
 .speicherstand{
     position: absolute;
     color: #fff5f3;
     left: 5%;
-    bottom: 37.5%;
-    font-size: 50px;
+    top: 57.5%;
+    font: 10vh Arial, sans-serif;
 }
 
 .sprache{
     position: absolute;
     color: #fff5f3;
     left: 5%;
-    bottom: 15%;
-    font-size: 50px;
+    top: 80%;
+    font: 10vh Arial, sans-serif;
 }
 
 /* Dropdown Button */
@@ -114,10 +114,10 @@ h1{
     color: #ff802c;
 	position: absolute;
     right: 40%;
-    top: 18%;
+    top: 14%;
     height: 10%;
     width: 25%;
-    font-size: 50px;
+    font: 10vh Arial, sans-serif;
     cursor: pointer;
 }
 
@@ -126,10 +126,10 @@ h1{
     color: #ff802c;
 	position: absolute;
     right: 40%;
-    top: 37.5%;
+    top: 36.5%;
     height: 10%;
     width: 25%;
-    font-size: 50px;
+    font: 10vh Arial, sans-serif;
     cursor: pointer;
 }
 /* Dropdown button on hover & focus */
