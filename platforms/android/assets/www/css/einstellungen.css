@@ -38,7 +38,6 @@ body {
     cursor: none;	
     text-decoration: none;
     text-align:center;
-   /* font: 10vh Arial, sans-serif;*/
 	font: 10vh Arial, sans-serif;
     padding: 7% 0% 10% 0%;
     box-sizing: border-box;
@@ -63,7 +62,6 @@ h1{
     cursor: none;	
     text-decoration: none;
     text-align:center;
-   /* font: 10vh Arial, sans-serif; */
 	font: 10vh Arial, sans-serif;
     padding: 7% 0% 10% 0%;
     box-sizing: border-box;
@@ -90,6 +88,7 @@ h1{
     left: 5%;
     top: 35%;
     font: 10vh Arial, sans-serif;
+	
 }
 
 .speicherstand{
@@ -117,7 +116,7 @@ h1{
     top: 14%;
     height: 10%;
     width: 25%;
-    font: 10vh Arial, sans-serif;
+    font: 7vh Arial, sans-serif;
     cursor: pointer;
 }
 
@@ -129,7 +128,19 @@ h1{
     top: 36.5%;
     height: 10%;
     width: 25%;
-    font: 10vh Arial, sans-serif;
+    font: 7vh Arial, sans-serif;
+    cursor: pointer;
+}
+
+.dropbtn3 {
+    background-color: #fff5f3;
+    color: #ff802c;
+	position: absolute;
+    right: 40%;
+    top: 59%;
+    height: 10%;
+    width: 18%;
+    font: 7vh Arial, sans-serif;
     cursor: pointer;
 }
 /* Dropdown button on hover & focus */
