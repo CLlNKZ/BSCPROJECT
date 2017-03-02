@@ -18,7 +18,7 @@ body {
 
 .startseitebutton {
     position: absolute;
-    right: 2.5%;
+    left: 52.5%;
     top: 10%;
 	display: inline-block;
     cursor: none;	
@@ -39,7 +39,7 @@ body {
 
 .neustartbutton {
     position: absolute;
-    right: 2.5%;
+    left: 52.5%;
     top: 55%;
     display: inline-block;
     cursor: none;	

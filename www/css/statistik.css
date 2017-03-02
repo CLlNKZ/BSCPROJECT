@@ -18,7 +18,7 @@ body {
 
 .löschenbutton {
     position: absolute;
-    left: 52.5%;
+    left: 57.5%;
     top: 10%;
     display: inline-block;
     cursor: none;	
@@ -38,7 +38,7 @@ body {
 }
 .zurückbuttonstatistik {
     position: absolute;
-    left: 52.5%;
+    left: 57.5%;
     top: 55%;
     display: inline-block;
     cursor: none;	
