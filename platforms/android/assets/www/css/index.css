@@ -52,7 +52,7 @@ body {
 	text-decoration: none;
     text-align:center;
     font: 10vh Arial, sans-serif;
-	padding: 7% 0% 10% 0%;
+	padding: 6% 0% 10% 0%;
     box-sizing: border-box;
     border-radius: 5px;
     border-color: black;
@@ -70,7 +70,7 @@ body {
     top: 10%;
     display: inline-block;
     cursor: none;	
-    padding: 80px 0px 0px 0px;
+    padding: 6% 0px 0px 0px;
     box-sizing: border-box;
     border-radius: 50%;
     box-shadow: 3px 3px 5px black;
@@ -90,7 +90,7 @@ body {
     text-decoration: none;
     text-align:center;
     font: 10vh Arial, sans-serif;
-    padding: 7% 0% 10% 0%;
+    padding: 6% 0% 10% 0%;
     box-sizing: border-box;
     border-radius: 5px;
     border-color: black;
@@ -109,6 +109,6 @@ width: 0px;
 height: 0px;
 -webkit-transform: rotate(360deg);
 border-style: solid;
-border-width: 200px 0 200px 350px;
+border-width: 25vh 0 25vh 40vh;
 border-color: transparent transparent transparent #fff5f3;
 }
