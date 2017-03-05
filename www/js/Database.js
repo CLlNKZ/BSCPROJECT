@@ -11,7 +11,7 @@ document.addEventListener('deviceready', function() {
 selected true:1 false:0
 */
 db.transaction(function(tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS Einstellungen (ID_Einstellungen INTEGER PRIMARY KEY, spieler TEXT, kartenset TEXT)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS Einstellungen (spieler TEXT, kartenset TEXT)');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS PermStatistik (spieler TEXT, kartenset TEXT, besterVersuch INTEGER, UNIQUE(spieler, kartenset))');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS SpielerStatus (ID_spieler TEXT PRIMARY KEY, kartenset TEXT, SPstatus INTEGER, punkte INTEGER, selected INTEGER)');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS Statistik (ID_Statistik INTEGER PRIMARY KEY, spieler TEXT, kartenset TEXT, versuche INTEGER)');
@@ -24,7 +24,7 @@ db.transaction(function(tx) {
 
 //Default Values for DB Einstellungen and SpielerStatus
 db.transaction(function(tx){
-	tx.executeSql('INSERT INTO IF NOT EXISTS Einstellungen VALUES (?,?,?)', [1, '1', '1']);
+	tx.executeSql('INSERT INTO IF NOT EXISTS Einstellungen VALUES (?,?)', ['1', '1']);
 	tx.executeSql('INSERT INTO IF NOT EXISTS SpielerStatus VALUES (?,?,?,?)', ['1', '1', 0, 0, 1]);
 	tx.executeSql('INSERT INTO IF NOT EXISTS SpielerStatus VALUES (?,?,?,?)', ['2', '1', 0, 0, 0]);
 	tx.executeSql('INSERT INTO IF NOT EXISTS SpielerStatus VALUES (?,?,?,?)', ['3', '1', 0, 0, 0]);
@@ -78,7 +78,7 @@ function updateItemEinstellungen(spieler, kartenset) {
  
     db.transaction(function (tx) {
 
-        var query = "UPDATE Einstellungen SET spieler = ?, kartenset = ? WHERE ID_Einstellungen = 1";
+        var query = "UPDATE Einstellungen SET spieler = ?, kartenset = ?";
 
         tx.executeSql(query, [spieler, kartenset], function(tx, res) {
             console.log("insertId: " + res.insertId);
