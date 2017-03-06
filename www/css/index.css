@@ -7,8 +7,8 @@ body {
     background-color:#a3d869;
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-   /* font-size: 100%;*/ 
-   height:100%;
+	height:100%;
+	font-size:30px;
     margin:0px;
     padding:0px;
     width:100%;
@@ -22,15 +22,7 @@ body {
         /* offset horizontal: half of image width and text area width */
     }
 }
-@media largescreen and (max-width: 800px){
-	
-}
-@media averagescreen and (width: 600px){
-	
-}
-@media smallscreen and (width:320px){
-	
-}
+
 @keyframes fade {
     from { opacity: 1.0; }
     50% { opacity: 0.4; }
@@ -104,7 +96,7 @@ body {
 .dreieck{
 position: absolute;
 left: 33%;
-bottom: 20%;
+top: 20%;
 width: 0px;
 height: 0px;
 -webkit-transform: rotate(360deg);
