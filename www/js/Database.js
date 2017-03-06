@@ -1,3 +1,4 @@
+alert("Start");
 var db = null;
 
 //open DB 
@@ -28,7 +29,7 @@ db.transaction(function(tx){
 	tx.executeSql('INSERT INTO IF NOT EXISTS SpielerStatus VALUES (?,?,?,?)', ['1', '1', 0, 0, 1]);
 	tx.executeSql('INSERT INTO IF NOT EXISTS SpielerStatus VALUES (?,?,?,?)', ['2', '1', 0, 0, 0]);
 	tx.executeSql('INSERT INTO IF NOT EXISTS SpielerStatus VALUES (?,?,?,?)', ['3', '1', 0, 0, 0]);
-	}
+	});
 
 
 //Add or Replace rows in PermStatistik

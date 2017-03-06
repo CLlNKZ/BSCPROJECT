@@ -1,3 +1,4 @@
+alert("Start");
 var db = null;
 
 //open DB 
@@ -7,10 +8,13 @@ document.addEventListener('deviceready', function() {
 });
 
 //create Tables
+/*
+selected true:1 false:0
+*/
 db.transaction(function(tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS Einstellungen (ID_Einstellungen INTEGER PRIMARY KEY, spieler TEXT, kartenset TEXT)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS Einstellungen (spieler TEXT, kartenset TEXT)');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS PermStatistik (spieler TEXT, kartenset TEXT, besterVersuch INTEGER, UNIQUE(spieler, kartenset))');
-	tx.executeSql('CREATE TABLE IF NOT EXISTS SpielerStatus (ID_spieler TEXT PRIMARY KEY, kartenset TEXT, SPstatus INTEGER, punkte INTEGER)');
+	tx.executeSql('CREATE TABLE IF NOT EXISTS SpielerStatus (ID_spieler TEXT PRIMARY KEY, kartenset TEXT, SPstatus INTEGER, punkte INTEGER, selected INTEGER)');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS Statistik (ID_Statistik INTEGER PRIMARY KEY, spieler TEXT, kartenset TEXT, versuche INTEGER)');
   }, function(error) {
     console.log('Transaction ERROR: ' + error.message);
@@ -21,11 +25,11 @@ db.transaction(function(tx) {
 
 //Default Values for DB Einstellungen and SpielerStatus
 db.transaction(function(tx){
-	tx.executeSql('INSERT INTO IF NOT EXISTS Einstellungen VALUES (?,?,?)', [1, '1', '1']);
-	tx.executeSql('INSERT INTO IF NOT EXISTS SpielerStatus VALUES (?,?,?,?)', ['1', '1', 0, 0]);
-	tx.executeSql('INSERT INTO IF NOT EXISTS SpielerStatus VALUES (?,?,?,?)', ['2', '1', 0, 0]);
-	tx.executeSql('INSERT INTO IF NOT EXISTS SpielerStatus VALUES (?,?,?,?)', ['3', '1', 0, 0]);
-	}
+	tx.executeSql('INSERT INTO IF NOT EXISTS Einstellungen VALUES (?,?)', ['1', '1']);
+	tx.executeSql('INSERT INTO IF NOT EXISTS SpielerStatus VALUES (?,?,?,?)', ['1', '1', 0, 0, 1]);
+	tx.executeSql('INSERT INTO IF NOT EXISTS SpielerStatus VALUES (?,?,?,?)', ['2', '1', 0, 0, 0]);
+	tx.executeSql('INSERT INTO IF NOT EXISTS SpielerStatus VALUES (?,?,?,?)', ['3', '1', 0, 0, 0]);
+	});
 
 
 //Add or Replace rows in PermStatistik
@@ -75,7 +79,7 @@ function updateItemEinstellungen(spieler, kartenset) {
  
     db.transaction(function (tx) {
 
-        var query = "UPDATE Einstellungen SET spieler = ?, kartenset = ? WHERE ID_Einstellungen = 1";
+        var query = "UPDATE Einstellungen SET spieler = ?, kartenset = ?";
 
         tx.executeSql(query, [spieler, kartenset], function(tx, res) {
             console.log("insertId: " + res.insertId);
@@ -108,6 +112,30 @@ function updateItemSpielerStatus(ID_spieler, kartenset, SPstatus, punkte) {
     }, function(error) {
         console.log('transaction error: ' + error.message);
     }, function() {
+        console.log('transaction ok');
+    });
+}
+
+//Read Einstellungen
+function getDataEinstellungen() {
+
+    db.transaction(function (tx) {
+
+        var query = "SELECT spieler, kartenset FROM Einstellungen";
+
+        tx.executeSql(query, [], function (tx, resultSet) {
+
+            for(var x = 0; x < resultSet.rows.length; x++) {
+                console.log(resultSet.rows.item(x).spieler +
+                    ", " + resultSet.rows.item(x).kartenset);
+            }
+        },
+        function (tx, error) {
+            console.log('SELECT error: ' + error.message);
+        });
+    }, function (error) {
+        console.log('transaction error: ' + error.message);
+    }, function () {
         console.log('transaction ok');
     });
 }
