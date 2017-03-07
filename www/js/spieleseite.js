@@ -101,11 +101,6 @@ for (i=0; i < feldanzahl; i++) {
 /*------------------------------------------------function init() ende------------------------------------------*/
 
 	function nothing(pic1,pic2) { 
-		//window.document.images[pic1].src=covered.src; 
-		//image_numbers[pic1]["status"]=0; 
-		//window.document.images[pic2].src=covered.src; 
-		//image_numbers[pic2]["status"]=0; 
-		
 		allow_click=1; 
 	}
 	
@@ -113,9 +108,7 @@ for (i=0; i < feldanzahl; i++) {
 	function anfang(x,y){
 		image_number=(x*spaltenanzahl+y);
  		if ((firstimage==0) && (image_numbers[image_number]["status"]<3)) {
-		//bei Image_numbers[image_number hier sind nur 4 eingespeichert!!!]
 		pic1=Math.floor(image_numbers[image_number]["zahl"]/2);  
-		//pic1=Math.floor(image_numbers[image_number*2]["zahl"]/2);
 		if ((image_numbers[image_number]["zahl"] % 2)==0) {
 			window.document.images[image_number].src=bild[pic1]["B"].src; 
 			}
@@ -123,13 +116,7 @@ for (i=0; i < feldanzahl; i++) {
  		}
 	}
 
-	function look(x,y) {
-	//Timer aktivieren und auf true setzen
-	
-	if (timer_gestartet=='no') { 
-		timer_gestartet='yes';
-		timer_start=new Date();  
-	}
+	function clickIt(x,y) {
 	
 	image_number=(x*spaltenanzahl+y);
 	
@@ -151,7 +138,6 @@ for (i=0; i < feldanzahl; i++) {
   	pic1=Math.floor(image_numbers[image_number]["zahl"]/2); 
   	first_clicked_image=image_number; 
   	allow_click=1; 
-	
  	}
   
   	//Wenn bereits ein Bild angeklickt ist und das zweite hinzukommt
@@ -189,19 +175,18 @@ for (i=0; i < feldanzahl; i++) {
 	allow_click=1;
 	}
 	
-	if (richtig_angeklickte_paare==anzahl_bildpaare) timer_ende=new Date(); 
 	}
 	
 	//Wenn alle Bildpaare gefunden sind
 	if (richtig_angeklickte_paare==anzahl_bildpaare) { 
-	var zeit=Math.floor(eval( ( (timer_ende.getTime() - timer_start.getTime()) ) / 1000)); 
-	alert("Gratulation, du hast das Spiel mit "+anzahl_versuche+" Versuchen und in "+zeit+" Sekunden geschafft!"); 
+	alert("Gratulation, du hast das Spiel mit "+anzahl_versuche+" Versuchen geschafft!"); 
 	window.location.reload();
 	} 
 	
 	}
 	
 	var game;
+	
 	/*
 	function loadmemory() { 
 	var start=0; 
