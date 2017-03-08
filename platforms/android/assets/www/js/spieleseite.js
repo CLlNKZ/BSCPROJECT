@@ -100,13 +100,7 @@ for (i=0; i < feldanzahl; i++) {
 }	
 
 /*------------------------------------------------function init() ende------------------------------------------*/
-	/*function dbAbfrage(){
-		db.transaction(function(tx) {
-   		tx.executeSql('SELECT kartenset FROM Einstellungen', [], );
-		});
- 		document.write(kartenset + " TestKartenset");
-	}
-	*/
+	
 	function nothing(pic1,pic2) { 
 		allow_click=1; 
 	}
