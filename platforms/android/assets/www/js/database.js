@@ -2,13 +2,23 @@ window.alert("Start");
 var db = null;
 
 //open DB 
-document.addEventListener('deviceready', function() {
+/* document.addEventListener('deviceready', function() {
 	window.alert("Hallo");
- //db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' }}
-										//, function (error) {
-   // console.log('Open database ERROR: ' + JSON.stringify(error));
-});
+	db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' }}
+	, function (error) {
+    console.log('Open database ERROR: ' + JSON.stringify(error));
+}); */
+function onDeviceReady(){
+    alert('123');
+ db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' });
+ if(db!=null){
+	 alter("geht");
+ }
+}
 
+if(true){
+ onDeviceReady();
+}
 //create Tables
 /*
 selected true:1 false:0

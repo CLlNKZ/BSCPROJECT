@@ -11,6 +11,9 @@ var db = null;
 function onDeviceReady(){
     alert('123');
  db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' });
+ if(db!=null){
+	 alter("geht");
+ }
 }
 
 if(true){
