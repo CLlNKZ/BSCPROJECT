@@ -126,7 +126,8 @@ function getDataEinstellungen() {
         tx.executeSql(query, [], function (tx, resultSet) {
 
             for(var x = 0; x < resultSet.rows.length; x++) {
-                console.log(resultSet.rows.item(x).spieler +
+				//Hier habe ich console.log auf window.alert
+                window.alert(resultSet.rows.item(x).spieler +
                     ", " + resultSet.rows.item(x).kartenset);
             }
         },
