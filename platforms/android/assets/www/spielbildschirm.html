@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+<SCRIPT type="text/javascript" language="javascript" src="js/database.js"></script>
 <SCRIPT type="text/javascript" language="javascript" src="js/spieleseite.js"></script>
 
 <title>Spielbildschirm</title>
@@ -13,10 +14,8 @@
     <div><a class="spielfeld">Spielfeld</a></div>
         <div align="center" class="bilder">
           <SCRIPT type="text/javascript">
-		  alert("Hallo");
-		  
+		  getDataEinstellungen();
 		  init();
-		  //window.onload = getDataEinstellungen();
 		  for (var i=0; i < zeilenanzahl; i++) 
 		  { 
 		  	for (var j=0; j < spaltenanzahl; j++) 
