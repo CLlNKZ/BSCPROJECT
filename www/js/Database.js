@@ -1,4 +1,4 @@
-alert("Start");
+window.alert("Start");
 var db = null;
 
 //open DB 
