@@ -1,5 +1,18 @@
 window.sqlitePlugin.echoTest(successCallback, errorCallback);
 
+			document.getElementById("probe").addEventListener("click", probe);
+			function proble() {
+   			var message = "I am Alert Dialog!";
+   			var title = "ALERT";
+  			var buttonName = "Alert Button";
+	
+   			navigator.notification.alert(message, alertCallback, title, buttonName);
+
+   			function alertCallback() {
+      		console.log("Alert is Dismissed!");
+   			}
+
+
 var app = {
     // Application Constructor
     initialize: function() {
