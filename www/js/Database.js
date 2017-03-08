@@ -2,12 +2,12 @@ window.alert("Start");
 var db = null;
 
 //open DB 
-document.addEventListener('deviceready', function() {
+/* document.addEventListener('deviceready', function() {
 	window.alert("Hallo");
- //db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' }}
-										//, function (error) {
-   // console.log('Open database ERROR: ' + JSON.stringify(error));
-});
+	db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' }}
+	, function (error) {
+    console.log('Open database ERROR: ' + JSON.stringify(error));
+}); */
 
 //create Tables
 /*
