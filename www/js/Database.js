@@ -8,7 +8,14 @@ var db = null;
 	, function (error) {
     console.log('Open database ERROR: ' + JSON.stringify(error));
 }); */
+function onDeviceReady(){
+    alert('123');
+ db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' });
+}
 
+if(true){
+ onDeviceReady();
+}
 //create Tables
 /*
 selected true:1 false:0
