@@ -77,7 +77,6 @@ var temp_numbers= new Array();
 /*----------------------------------------------------function init() start-------------------------------------------------*/
 
 function init() {
-
 for (var i=0; i < feldanzahl; i++) { 
 temp_numbers[i]=i; 
 }
@@ -187,14 +186,8 @@ for (i=0; i < feldanzahl; i++) {
 	}
 	
 	var game;
-	
 	/*
-	function loadmemory() { 
-	var start=0; 
-	//hier könnten wir rausladen, welches Set ausgewählt ist?
-	if (document.spiel.settings[0].checked == true) { game="r4c4"; start=1; } 
-	if (document.spiel.settings[1].checked == true) { game="r4c6"; start=1; } 
-	if (document.spiel.settings[2].checked == true) { game="r6c6"; start=1; } 
-	window.name="DoubleCardON"; location.reload(); 
+	function loadmemory() {
+	
 	} 
 	*/
