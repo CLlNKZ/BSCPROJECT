@@ -1,15 +1,3 @@
-//window.sqlitePlugin.echoTest(successCallback, errorCallback);
-
-function dialogAlert() {
-   			var message = "I am Alert Dialog!";
-   			var title = "ALERT";
-  			var buttonName = "Alert Button";
-	
-   			navigator.notification.alert(message, alertCallback, title, buttonName);
-
-   			function alertCallback() {
-      		console.log("Alert is Dismissed!");
-   			}
 			
 var app = {
     // Application Constructor
@@ -28,8 +16,6 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-		alert("Test");
-		document.getElementById("dialogAlert").addEventListener("click", dialogAlert);
         app.receivedEvent('deviceready');
 		
     },
