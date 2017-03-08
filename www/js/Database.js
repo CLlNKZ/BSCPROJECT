@@ -3,8 +3,10 @@ var db = null;
 
 //open DB 
 document.addEventListener('deviceready', function() {
-  db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' }, function (error) {
-    console.log('Open database ERROR: ' + JSON.stringify(error));
+	window.alert("Hallo");
+ //db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' }}
+										//, function (error) {
+   // console.log('Open database ERROR: ' + JSON.stringify(error));
 });
 
 //create Tables
