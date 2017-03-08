@@ -95,11 +95,18 @@ for (var i=0; i < feldanzahl; i++) {
 
 for (i=0; i < feldanzahl; i++) { 
  	image_numbers[i]["zahl"]=temp_numbers[i]; 
-} 	
+} 
+
 }	
 
 /*------------------------------------------------function init() ende------------------------------------------*/
-
+	/*function dbAbfrage(){
+		db.transaction(function(tx) {
+   		tx.executeSql('SELECT kartenset FROM Einstellungen', [], );
+		});
+ 		document.write(kartenset + " TestKartenset");
+	}
+	*/
 	function nothing(pic1,pic2) { 
 		allow_click=1; 
 	}
