@@ -2,23 +2,13 @@ window.alert("Start");
 var db = null;
 
 //open DB 
-/* document.addEventListener('deviceready', function() {
+ document.addEventListener('deviceready', function() {
 	window.alert("Hallo");
-	db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' }}
+	db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' })}
 	, function (error) {
-    console.log('Open database ERROR: ' + JSON.stringify(error));
-}); */
-function onDeviceReady(){
-    alert('123');
- db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' });
- 
-	 alert("geht");
- 
-}
+    window.alert('Open database ERROR: ' + JSON.stringify(error));
+}); 
 
-if(true){
- onDeviceReady();
-}
 //create Tables
 /*
 selected true:1 false:0
@@ -29,9 +19,9 @@ db.transaction(function(tx) {
 	tx.executeSql('CREATE TABLE IF NOT EXISTS SpielerStatus (ID_spieler TEXT PRIMARY KEY, kartenset TEXT, SPstatus INTEGER, punkte INTEGER, selected INTEGER)');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS Statistik (ID_Statistik INTEGER PRIMARY KEY, spieler TEXT, kartenset TEXT, versuche INTEGER)');
   }, function(error) {
-    console.log('Transaction ERROR: ' + error.message);
+    window.alert('Transaction ERROR: ' + error.message);
   }, function() {
-    console.log('Populated database OK');
+    window.alert('Populated database OK');
   });
 
 
@@ -52,16 +42,16 @@ function addItemPermStatistik(spieler, kartenset, besterVersuch) {
         var query = "INSERT or REPLACE INTO PermStatistik (spieler, kartenset besterVersuch) VALUES (?,?,?)";
 
         tx.executeSql(query, [spieler, kartenset, besterVersuch], function(tx, res) {
-            console.log("insertId: " + res.insertId + " -- probably 1");
-            console.log("rowsAffected: " + res.rowsAffected + " -- should be 1");
+            window.alert("insertId: " + res.insertId + " -- probably 1");
+            window.alert("rowsAffected: " + res.rowsAffected + " -- should be 1");
         },
         function(tx, error) {
-            console.log('INSERT error: ' + error.message);
+            window.alert('INSERT error: ' + error.message);
         });
     }, function(error) {
-        console.log('transaction error: ' + error.message);
+        window.alert('transaction error: ' + error.message);
     }, function() {
-        console.log('transaction ok');
+        window.alert('transaction ok');
     });
 }
 
@@ -73,16 +63,16 @@ function addItemStatistik(id_Statistik, spieler, kartenset, versuche) {
         var query = "INSERT INTO Statistik (ID_Statistik, spieler, kartenset, versuche) VALUES (?,?,?,?)";
 
         tx.executeSql(query, [id_Statistik, spieler, kartenset, versuche], function(tx, res) {
-            console.log("insertId: " + res.insertId + " -- probably 1");
-            console.log("rowsAffected: " + res.rowsAffected + " -- should be 1");
+            window.alert("insertId: " + res.insertId + " -- probably 1");
+            window.alert("rowsAffected: " + res.rowsAffected + " -- should be 1");
         },
         function(tx, error) {
-            console.log('INSERT error: ' + error.message);
+            window.alert('INSERT error: ' + error.message);
         });
     }, function(error) {
-        console.log('transaction error: ' + error.message);
+        window.alert('transaction error: ' + error.message);
     }, function() {
-        console.log('transaction ok');
+        window.alert('transaction ok');
     });
 }
 
@@ -94,16 +84,16 @@ function updateItemEinstellungen(spieler, kartenset) {
         var query = "UPDATE Einstellungen SET spieler = ?, kartenset = ?";
 
         tx.executeSql(query, [spieler, kartenset], function(tx, res) {
-            console.log("insertId: " + res.insertId);
-            console.log("rowsAffected: " + res.rowsAffected);
+            window.alert("insertId: " + res.insertId);
+            window.alert("rowsAffected: " + res.rowsAffected);
         },
         function(tx, error) {
-            console.log('UPDATE error: ' + error.message);
+            window.alert('UPDATE error: ' + error.message);
         });
     }, function(error) {
-        console.log('transaction error: ' + error.message);
+        window.alert('transaction error: ' + error.message);
     }, function() {
-        console.log('transaction ok');
+        window.alert('transaction ok');
     });
 }
 
@@ -115,16 +105,16 @@ function updateItemSpielerStatus(ID_spieler, kartenset, SPstatus, punkte) {
         var query = "UPDATE SpielerStatus SET kartenset = ?, SPstatus = ?, punkte = ? WHERE ID_spieler = ?";
 
         tx.executeSql(query, [ID_spieler, kartenset, SPstatus, punkte], function(tx, res) {
-            console.log("insertId: " + res.insertId);
-            console.log("rowsAffected: " + res.rowsAffected);
+            window.alert("insertId: " + res.insertId);
+            window.alert("rowsAffected: " + res.rowsAffected);
         },
         function(tx, error) {
-            console.log('UPDATE error: ' + error.message);
+            window.alert('UPDATE error: ' + error.message);
         });
     }, function(error) {
-        console.log('transaction error: ' + error.message);
+        window.alert('transaction error: ' + error.message);
     }, function() {
-        console.log('transaction ok');
+        window.alert('transaction ok');
     });
 }
 
@@ -138,18 +128,18 @@ function getDataEinstellungen() {
         tx.executeSql(query, [], function (tx, resultSet) {
 
             for(var x = 0; x < resultSet.rows.length; x++) {
-				//Hier habe ich console.log auf window.alert
+				//Hier habe ich window.alert auf window.alert
                 window.alert(resultSet.rows.item(x).spieler +
                     ", " + resultSet.rows.item(x).kartenset);
             }
         },
         function (tx, error) {
-            console.log('SELECT error: ' + error.message);
+            window.alert('SELECT error: ' + error.message);
         });
     }, function (error) {
-        console.log('transaction error: ' + error.message);
+        window.alert('transaction error: ' + error.message);
     }, function () {
-        console.log('transaction ok');
+        window.alert('transaction ok');
     });
 }
 
@@ -163,17 +153,17 @@ function getDataStatistik(spieler, kartenset) {
         tx.executeSql(query, [spieler, kartenset], function (tx, resultSet) {
 
             for(var x = 0; x < resultSet.rows.length; x++) {
-                console.log(resultSet.rows.item(x).ID_Statistik +
+                window.alert(resultSet.rows.item(x).ID_Statistik +
                     ", " + resultSet.rows.item(x).versuche);
             }
         },
         function (tx, error) {
-            console.log('SELECT error: ' + error.message);
+            window.alert('SELECT error: ' + error.message);
         });
     }, function (error) {
-        console.log('transaction error: ' + error.message);
+        window.alert('transaction error: ' + error.message);
     }, function () {
-        console.log('transaction ok');
+        window.alert('transaction ok');
     });
 }
 
@@ -186,15 +176,15 @@ function getDataPermStatistik(spieler, kartenset) {
 
         tx.executeSql(query, [spieler, kartenset], function (tx, resultSet) {
 
-                console.log(resultSet.rows.item(0).besterVersuch);
+                window.alert(resultSet.rows.item(0).besterVersuch);
         },
         function (tx, error) {
-            console.log('SELECT error: ' + error.message);
+            window.alert('SELECT error: ' + error.message);
         });
     }, function (error) {
-        console.log('transaction error: ' + error.message);
+        window.alert('transaction error: ' + error.message);
     }, function () {
-        console.log('transaction ok');
+        window.alert('transaction ok');
     });
 }
 //Read SpielerStatus
@@ -207,19 +197,19 @@ function getDataStatus(spieler) {
         tx.executeSql(query, [spieler], function (tx, resultSet) {
 
             for(var x = 0; x < resultSet.rows.length; x++) {
-                console.log(resultSet.rows.item(x).ID_spieler +
+                window.alert(resultSet.rows.item(x).ID_spieler +
                     ", " + resultSet.rows.item(x).kartenset + 
 					", "+ resultSet.rows.item(x).SPstatus + 
 					", "+ resultSet.rows.item(x).punkte);
             }
         },
         function (tx, error) {
-            console.log('SELECT error: ' + error.message);
+            window.alert('SELECT error: ' + error.message);
         });
     }, function (error) {
-        console.log('transaction error: ' + error.message);
+        window.alert('transaction error: ' + error.message);
     }, function () {
-        console.log('transaction ok');
+        window.alert('transaction ok');
     });
 }
 //Delete Statistik
@@ -230,22 +220,22 @@ function deleteItemsStatistik() {
         var query = "DELETE FROM Statistik";
 
         tx.executeSql(query, [], function(tx, res) {
-            console.log("rowsAffected: " + res.rowsAffected);
+            window.alert("rowsAffected: " + res.rowsAffected);
         },
         function(tx, error) {
-            console.log('Delete error: ' + error.message);
+            window.alert('Delete error: ' + error.message);
         });
     }, function(error) {
-        console.log('transaction error: ' + error.message);
+        window.alert('transaction error: ' + error.message);
     }, function() {
-        console.log('transaction ok');
+        window.alert('transaction ok');
     });
 }
 //Close DB
 function closeDB() {
     db.close(function () {
-        console.log("DB closed!");
+        window.alert("DB closed!");
     }, function (error) {
-        console.log("Error closing DB:" + error.message);
+        window.alert("Error closing DB:" + error.message);
     });
 }
