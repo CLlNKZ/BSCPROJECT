@@ -11,7 +11,7 @@
 //updateItemSpielerStatus(1, Autos, 0, 20, 1);
 
 //Read Einstellungen
-getDataEinstellungen();
+//getDataEinstellungen();
 
 //Read Statistik
 //getDataStatistik(1, Werkzeug);

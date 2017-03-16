@@ -1,10 +1,12 @@
 window.alert("Start");
-var db = null;
+var db;
 
 //open DB 
  document.addEventListener('deviceready', function() {
 	window.alert("Hallo");
-	db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' })}
+	db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default'});
+	window.alert("db open");
+	}
 	, function (error) {
 		window.alert("DB fail");
     window.alert('Open database ERROR: ' + JSON.stringify(error));
@@ -15,15 +17,17 @@ var db = null;
 selected true:1 false:0
 */
 db.transaction(function(tx) {
+	window.alert("asd");
     tx.executeSql('CREATE TABLE IF NOT EXISTS Einstellungen (spieler TEXT, kartenset TEXT)');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS PermStatistik (spieler TEXT, kartenset TEXT, besterVersuch INTEGER, UNIQUE(spieler, kartenset))');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS SpielerStatus (ID_spieler TEXT PRIMARY KEY, kartenset TEXT, SPstatus INTEGER, punkte INTEGER, selected INTEGER)');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS Statistik (ID_Statistik INTEGER PRIMARY KEY, spieler TEXT, kartenset TEXT, versuche INTEGER)');
-  }, function(error) {
+  });
+  /*, function(error) {
     window.alert('Transaction ERROR: ' + error.message);
   }, function() {
     window.alert('Populated database OK');
-  });
+  }*/
 
 
 //Default Values for DB Einstellungen and SpielerStatus
