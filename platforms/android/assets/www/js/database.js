@@ -6,6 +6,7 @@ var db = null;
 	window.alert("Hallo");
 	db = window.sqlitePlugin.openDatabase({ name: 'doublecardon.db', location: 'default' })}
 	, function (error) {
+		window.alert("DB fail");
     window.alert('Open database ERROR: ' + JSON.stringify(error));
 }); 
 
@@ -120,9 +121,9 @@ function updateItemSpielerStatus(ID_spieler, kartenset, SPstatus, punkte) {
 
 //Read Einstellungen
 function getDataEinstellungen() {
-
+window.alert("1");
     db.transaction(function (tx) {
-
+window.alert("2");
         var query = "SELECT spieler, kartenset FROM Einstellungen";
 
         tx.executeSql(query, [], function (tx, resultSet) {
