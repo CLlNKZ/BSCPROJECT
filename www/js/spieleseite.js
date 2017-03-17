@@ -96,17 +96,20 @@ for (i=0; i < feldanzahl; i++) {
  	image_numbers[i]["zahl"]=temp_numbers[i]; 
 } 
 
-//loadCardSets();
+loadCardSets();
 }	
 /*------------------------------------------------function init() ende------------------------------------------*/
-	/*
+	
 	function loadCardSets(){
-	myArray = new Array();
-	myDocument = new Document();
-	myDocument.loadFile("../db/einstellungen.txt");
-	for(var i=0; i<myDocument.length; i++){ myArray[i] = myDocument.line[i]; alert(myArray[i]); }
+	var einstellungen;
+	//window.location.href = "db/einstellungen.txt";
+	var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+	xmlhttp.open("GET", "db/einstellungen.txt", true);
+	var i = xmlhttp;
+	alert(i);
 	}
-	*/
+	
+	
 	
 	function nothing(pic1,pic2) { 
 		allow_click=1; 
