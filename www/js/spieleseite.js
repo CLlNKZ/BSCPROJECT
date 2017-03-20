@@ -96,33 +96,9 @@ for (i=0; i < feldanzahl; i++) {
  	image_numbers[i]["zahl"]=temp_numbers[i]; 
 } 
 
-loadCardSets();
+//loadCardSets();
 }	
 /*------------------------------------------------function init() ende------------------------------------------*/
-	
-	
-	function loadCardSets(){
-	var myObj, myJSON, text, obj;
-	//JSON Code store Data
-	myObj = { "set":"fruits", "name":"spieler1" };
-	myJSON = JSON.stringify(myObj);
-	localStorage.setItem("einstellungen", myJSON);
-	//Get Data
-	text = localStorage.getItem("einstellungen");
-	obj = JSON.parse(text);
-	var a = obj.name;
-	var b = obj.set;
-	alert(a);
-	alert(b);
-	/* JavaScriptCode
-	var einstellungen;
-	//window.location.href = "db/einstellungen.txt";
-	var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-	xmlhttp.open("GET", "db/einstellungen.txt", true);
-	var i = xmlhttp;
-	alert(i);
-	*/
-	}
 	
 	
 	

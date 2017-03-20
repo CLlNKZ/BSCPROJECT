@@ -32,3 +32,13 @@ var app = {
     }
 		
 };
+
+function loadCardSets(){
+ //Get Data muss dann später in die Indexseite !!!
+	var text = localStorage.getItem("einstellungen");
+	obj = JSON.parse(text);
+	var a = obj.name;
+	var b = obj.set;
+	alert(a);
+	alert(b);
+}
