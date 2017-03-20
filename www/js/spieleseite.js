@@ -19,7 +19,9 @@ var anzahl_versuche=0;
 var richtig_angeklickte_paare=0;
 
 //Je nachdem, welches Bildset ausgewählt ist, muss dies in die Variable bildset hineingeschrieben werden (der Ordner)
-var bildset = "fruits";
+var set = localStorage.getItem("einstellungen");
+obj = JSON.parse(set);
+var bildset = obj.set;
 
 var firstimage=0;
 var image_number;
