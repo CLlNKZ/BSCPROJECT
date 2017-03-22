@@ -1,5 +1,6 @@
 function storeCardSets(){
 	var myObj, myJSON, obj;
+	//Einstellungen von HTML holen
 	var fruits = document.getElementById("mySelect").value;
 	var store = document.getElementById("mySelect3").value;
 	
