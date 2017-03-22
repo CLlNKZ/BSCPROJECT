@@ -19,9 +19,17 @@ var anzahl_versuche=0;
 var richtig_angeklickte_paare=0;
 
 //Je nachdem, welches Bildset ausgewählt ist, muss dies in die Variable bildset hineingeschrieben werden (der Ordner)
-var set = localStorage.getItem("einstellungen");
-obj = JSON.parse(set);
-var bildset = obj.set;
+var bildsets = localStorage.getItem("einstellungen");
+if(bildsets == null){
+	var bildset = "fruits";
+	var playernr = "player1";
+}
+else{
+	obj = JSON.parse(bildsets);
+	var bildset = obj.set;
+	var playernr = obj.name;
+}
+
 
 var firstimage=0;
 var image_number;
@@ -97,8 +105,6 @@ for (var i=0; i < feldanzahl; i++) {
 for (i=0; i < feldanzahl; i++) { 
  	image_numbers[i]["zahl"]=temp_numbers[i]; 
 } 
-
-//loadCardSets();
 }	
 /*------------------------------------------------function init() ende------------------------------------------*/
 	
@@ -183,15 +189,23 @@ for (i=0; i < feldanzahl; i++) {
 	
 	//Wenn alle Bildpaare gefunden sind
 	if (richtig_angeklickte_paare==anzahl_bildpaare) { 
+	storeSpielerstatus();
 	alert("Gratulation, du hast das Spiel mit "+anzahl_versuche+" Versuchen geschafft!"); 
 	window.location.reload();
 	} 
 	
 	}
 	
-	var game;
-	/*
-	function loadmemory() {
+	function storeSpielerstatus(){
+		//Abfragen welche Einstellungen ausgewählt sind wird schon am Anfang
+		var load_spielerstatus = localStorage.getItem("spielerstatus");
+		var obj = JSON.parse(load_spielerstatus, function (key, value) {
+    	if (key == "selected") {
+        	alert (playernr);
+    	} else {
+        return value;
+    	}});
+
+	}
 	
-	} 
-	*/
+	
