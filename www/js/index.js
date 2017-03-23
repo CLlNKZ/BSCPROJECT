@@ -35,12 +35,12 @@ var app = {
 
 function loadCardSets(){
  //Get Data
-	/*var text = localStorage.getItem("einstellungen");
-	obj = JSON.parse(text);
-	var playerName = obj.name;
-	var setToPlay = obj.set;
-	*/
-	
+	var text = localStorage.getItem("einstellungen");
+	if(text == null){
+		var myObj = { "set":"fruits", "name":"player1" };
+		var myJSON = JSON.stringify(myObj);
+		localStorage.setItem("einstellungen", myJSON);
+	}
 }
 
 function CreateTableSpielerstatus(){
