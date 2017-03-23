@@ -6,7 +6,7 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/statistik.css" />
         
-    <title id='Description'>jQuery Chart Column Series Example</title>
+    <title id='Description'></title>
     <link rel="stylesheet" href="jq/jqx.base.css" type="text/css" />
     <script type="text/javascript" src="jq/jquery.mobile-1.4.3.min.js"></script>
     <script type="text/javascript" src="jq/jqxcore.js"></script>
@@ -27,7 +27,7 @@
 				
             // prepare jqxChart settings
             var settings = {
-                title: "Statistik",
+                title: "",
                 //description: "Time spent in vigorous exercise",
                 //padding: { left: 5, top: 5, right: 5, bottom: 5 },
                 //titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
@@ -40,8 +40,6 @@
                 },
                 valueAxis:
                 {
-                    minValue: 0,
-                    maxValue: 100,
                     unitInterval: 10,
                     title: {text: 'Anzahl der Versuche'}
                 },
@@ -67,7 +65,7 @@
     </head>
     <body>
     <div><a class="statistik">Statistik</a></br></div>
-    <div id='chartContainer' style="width: 50%; height: 300px; float: inherit, top: 20%"></div>
+    <div id='chartContainer' style="width: 65%; height: 65%;"></div>
     <div class="schrift1">Letzer Versuch:</div>
     <div class="schrift2">Bester Versuch:</div>
 <div>

@@ -6,17 +6,14 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Startbildschirm</title>
-		
 		<script type="text/javascript" language="javascript" src="js/index.js"></script>
-		<script type="text/javascript" language="javascript" src="js/Database.js"></script>
 		<script type="text/javascript" language="javascript" src="cordova.js"></script>
-        
     </head>
 	
     <body>
         <div>
             <div>
-                <a href="spielbildschirm.html" class="playbutton"><font class="dreieck"></font></a>            
+                <a href="spielbildschirm.html" class="playbutton" onClick="loadCardSets()"><font class="dreieck"></font></a>            
             </div>
             <div>
                 <a href="statistik.html" class="statistikbutton">Statistik</a>
@@ -26,16 +23,12 @@
             </div>
         </div>
 
-		<!--<script type="text/javascript" src="cordova.js"></script>-->
-        <!-- <script type="text/javascript" src="js/index.js"></script>
-		<script type="text/javascript" src="js/database.js"></script> -->
         <script type="text/javascript"> 
-            app.initialize();			
+            app.initialize();
+			CreateTableSpielerstatus();			
         </script>
         
 		<script type="text/javascript" language="javascript" src="js/einstellungen.js"></script>
-		<!-- <script type="text/javascript" src="js/database.js" > 
-            init();			
-        </script> -->
+		
     </body>
 </html>

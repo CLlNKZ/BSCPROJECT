@@ -20,16 +20,15 @@ body {
 	text-decoration: none;
     position: absolute;
 	text-align:center;
+	top: 2.5%;
 	left: 38.5%;
     font: 10vh Arial, sans-serif;
     color: #fff5f3;
 	text-shadow: 2px 2px 2px black;
-	text-decoration-line: underline;
+	text-decoration: underline;
 }
 
 .bilder{
 	position: absolute;
 	top: 15%;
 }
-
-

@@ -14,6 +14,7 @@ body {
     margin:0px;
     padding:0px;
     width:100%;
+	overflow: hidden;
 }
 
 .löschenbutton {
@@ -62,7 +63,7 @@ body {
     position: absolute;
 	text-align:center;
 	left: 22.5%;
-	top: 5%;
+	top: 2.5%;
     font: 10vh Arial, sans-serif;
     color: #fff5f3;
 	text-shadow: 2px 2px 2px black;
