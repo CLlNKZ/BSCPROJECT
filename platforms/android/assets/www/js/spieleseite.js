@@ -20,16 +20,9 @@ var richtig_angeklickte_paare=0;
 
 //Je nachdem, welches Bildset ausgewählt ist, muss dies in die Variable bildset hineingeschrieben werden (der Ordner)
 var bildsets = localStorage.getItem("einstellungen");
-if(bildsets == null){
-	var bildset = "fruits";
-	var playernr = "player1";
-}
-else{
 	obj = JSON.parse(bildsets);
 	var bildset = obj.set;
 	var playernr = obj.name;
-}
-
 
 var firstimage=0;
 var image_number;

@@ -39,8 +39,8 @@
                     tickMarks: {visible: true}
                 },
                 valueAxis:
-                {
-                    unitInterval: 10,
+                {	minValue: 0,
+                    unitInterval: 5,
                     title: {text: 'Anzahl der Versuche'}
                 },
                 colorScheme: 'scheme01',
@@ -65,7 +65,7 @@
     </head>
     <body>
     <div><a class="statistik">Statistik</a></br></div>
-    <div id='chartContainer' style="width: 65%; height: 65%;"></div>
+    <div id='chartContainer' style="width: 60%; height: 60vh"></div>
 	 
     <div class="schrift1">Letzer Versuch:</div>
     <div class="schrift2">Bester Versuch:</div>
