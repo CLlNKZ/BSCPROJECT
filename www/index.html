@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Startbildschirm</title>
 		<script type="text/javascript" language="javascript" src="js/index.js"></script>
+		<script type="text/javascript" language="javascript" src="js/statistik.js"></script>
 		<!-- <script type="text/javascript" language="javascript" src="cordova.js"></script> -->
     </head>
 	
@@ -15,8 +16,7 @@
             <div>
                 <a href="spielbildschirm.html" class="playbutton" onClick="loadCardSets()"><font class="dreieck"></font></a>            
             </div>
-            <div>
-                <a href="statistik.html" class="statistikbutton">Statistik</a>
+            <div onclick="readBest()" class="statistikbutton">				Statistik
             </div>
             <div>
                 <a href="einstellungen.html" class="einstellungenbutton">Einstellungen</a>
