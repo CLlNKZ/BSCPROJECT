@@ -183,22 +183,39 @@ for (i=0; i < feldanzahl; i++) {
 	//Wenn alle Bildpaare gefunden sind
 	if (richtig_angeklickte_paare==anzahl_bildpaare) { 
 	storeSpielerstatus();
-	alert("Gratulation, du hast das Spiel mit "+anzahl_versuche+" Versuchen geschafft!"); 
-	window.location.reload();
+	//alert("Gratulation, du hast das Spiel mit "+anzahl_versuche+" Versuchen geschafft!"); 
 	} 
 	
 	}
 	
 	function storeSpielerstatus(){
 		//Abfragen welche Einstellungen ausgewählt sind wird schon am Anfang
-		var load_spielerstatus = localStorage.getItem("spielerstatus");
-		var obj = JSON.parse(load_spielerstatus, function (key, value) {
-    	if (key == "selected") {
-        	alert (playernr);
-    	} else {
-        return value;
-    	}});
-
+		var set_selected_spielerstatus = localStorage.getItem("spielerstatus");
+		selected_status = JSON.parse(set_selected_spielerstatus);
+		
+		var richtige_Stelle_im_Array;
+		for (i = 0; i < selected_status.selected.length; i++) {
+    		if(selected_status.selected[i] == "true"){
+				selected_status.status[i] += 1; //erhöhe status um 1 bei jeder Runde
+				selected_status.punkte[i] += anzahl_versuche;
+				if(selected_status.status[i] >= 3){ //sobald die dritte Runde fertig gespielt wurde
+					selected_status.status[i] = 0; //setze status auf 0
+					//alert(selected_status.punkte[i]);
+					if(selected_status.besterVersuch[i] > selected_status.punkte[i] || selected_status.besterVersuch[i] == 0){	
+					selected_status.besterVersuch[i] = selected_status.punkte[i]; //Speichere den besten Versuch
+					}
+					selected_status.punkte[i] = 0; //setze Punkte auch wieder auf 0
+					selecting = JSON.stringify(selected_status);
+					localStorage.setItem("spielerstatus", selecting);
+					window.document.location.href = "endbildschirm.html";
+				}
+				else{
+					selecting = JSON.stringify(selected_status);
+					localStorage.setItem("spielerstatus", selecting);
+					window.location.reload();
+				}
+			}
+		} 
 	}
 	
 	
