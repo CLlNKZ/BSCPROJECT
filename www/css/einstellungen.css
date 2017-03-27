@@ -163,7 +163,7 @@ body {
 .show {display:block;}
 
 .einstellungen{
-	text-decoration: none;
+	text-decoration: underline;
     position: absolute;
 	text-align:center;
 	left: 20%;

@@ -59,7 +59,7 @@ body {
 }
 
 .statistik{
-	text-decoration: none;
+	text-decoration: underline;
     position: absolute;
 	text-align:center;
 	left: 22.5%;
@@ -89,4 +89,4 @@ body {
     font: 8vh Arial, sans-serif;
     color: #fff5f3;
 	text-shadow: 2px 2px 2px black;
-}.chartContainer{	position: absolute;	top: 13vh;	left: 1vw;}
+}.chartContainer{	position: absolute;	top: 14vh;	left: 1vw;}

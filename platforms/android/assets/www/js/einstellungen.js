@@ -17,7 +17,7 @@ function storeCardSets(){
 	welche Wert wir auf true setzen müssen; alle anderen müssen auf false gesetzt werden
 	*/
 	
-	var richtige_Stelle_im_Array;
+	//var richtige_Stelle_im_Array;
 	for (i = 0; i < selected_status.name.length; i++) {
     	if(store == selected_status.name[i] && playset == selected_status.set[i]){
 			selected_status.selected[i] = "true";
@@ -26,6 +26,9 @@ function storeCardSets(){
 			selected_status.selected[i] = "false";
 		}
 	} 
+	
+	selecting = JSON.stringify(selected_status);
+	localStorage.setItem("spielerstatus", selecting);
 
 }
 

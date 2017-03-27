@@ -64,8 +64,10 @@ function CreateTableSpielerstatus(){
 					   0,0,0,0,0],
 			"selected": [ "true", "false", "false", "false", "false",
 						 "false", "false", "false", "false", "false",
-						 "false", "false", "false", "false", "false",
-						 "false", "false", "false", "false", "false"]
+						 "false", "false", "false", "false", "false"],
+			"besterVersuch": [ 0,0,0,0,0,
+					   		   0,0,0,0,0,
+					   	  	   0,0,0,0,0]
 			};
 			myJSON = JSON.stringify(objects);
 			localStorage.setItem("spielerstatus", myJSON);

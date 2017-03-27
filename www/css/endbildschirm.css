@@ -59,7 +59,7 @@ body {
 }
 
 .ziel{
-	text-decoration: none;
+	text-decoration: underline;
     position: absolute;
 	text-align:center;
 	right: 67.5%;
