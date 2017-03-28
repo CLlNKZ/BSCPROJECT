@@ -13,6 +13,7 @@
     <script type="text/javascript" src="jq/jqxchart.js"></script>
     <script type="text/javascript" src="jq/jqxdraw.js"></script>
     <script type="text/javascript" src="jq/jqxdata.js"></script>
+    <script type="text/javascript" src="js/statistik.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 		
@@ -65,11 +66,11 @@
     </head>
     <body>
     <div><a class="statistik">Statistik</a></div>
-    <div id='chartContainer' style="width: 60%; height: 60vh"></div>
+    <div id='chartContainer' style="width: 60%; height: 65vh"></div>
 	 
-    <div class="schrift1">Letzer Versuch:</div>
-    <div class="schrift2">Bester Versuch:</div>
-<div>
+    <!--<div class="schrift1">Letzer Versuch: <span id="last"></span></div>-->
+    <div class="schrift2">Bester Versuch: <span id="best"></span></div>
+	<div>
             <div>
                 <a class="löschenbutton">Löschen</a>
 
@@ -79,5 +80,8 @@
 
             </div>
         </div>
+    <script>
+	besterUndLetzterVersuch();
+	</script>
     </body>
 </html>

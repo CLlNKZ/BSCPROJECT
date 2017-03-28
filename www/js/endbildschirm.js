@@ -22,13 +22,13 @@ function PunkteAusgabe(){
 		}
 		
 		if(letzerVersuch == 9){
- 	 	bild.src="img/medal/medal1.png";
+ 	 	bild.src="img/medal/Medal1.png";
 		}
 		if(letzerVersuch == 10 || letzerVersuch == 11){
- 	 	bild.src="img/medal/medal2.png";
+ 	 	bild.src="img/medal/Medal2.png";
 		}
 		if(letzerVersuch > 11){
- 	 	bild.src="img/medal/medal3.png";
+ 	 	bild.src="img/medal/Medal3.png";
 		}
 				
  	 	document.write('<img src="'+bild.src+'" border="0" width="50%" height="10%">');
