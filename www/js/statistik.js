@@ -7,7 +7,7 @@ function readBest(){
 			alert ("Keine Statistik vorhanden");
 			}
 			else{
-			document.getElementById("schrift2").value = selected_status.besterVersuch[i];
+			//document.getElementById("schrift2").value = selected_status.besterVersuch[i];
 			window.document.location.href="statistik.html";
 			}
 		}

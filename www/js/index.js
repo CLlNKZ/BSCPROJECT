@@ -74,4 +74,38 @@ function CreateTableSpielerstatus(){
 		}
 }
 
+function CreateTableStatistik(){
+		var statistik_tabelle, JS;
+		statistik_tabelle = localStorage.getItem("statistik");
+		//Wenn Tabelle statistik noch nicht existiert, erstellen
+		//Wir haben hier 75 Einträge 3Spieler*5Sets=15*5letzteEinträge= 75 Einträge
+		if(statistik_tabelle ==  null){
+			objects = { 
+			"names":[ "player1", "player1", "player1", "player1", "player1", "player1", "player1", "player1", "player1", "player1",
+					"player1", "player1", "player1", "player1", "player1", "player1", "player1", "player1", "player1", "player1",
+					"player1", "player1", "player1", "player1", "player1",
+					"player2", "player2", "player2", "player2", "player2", "player2", "player2", "player2", "player2", "player2",
+					"player2", "player2", "player2", "player2", "player2", "player2", "player2", "player2", "player2", "player2",
+					"player2", "player2", "player2", "player2", "player2",
+					"player3", "player3", "player3", "player3", "player3", "player3", "player3", "player3", "player3", "player3",
+					"player3", "player3", "player3", "player3", "player3", "player3", "player3", "player3", "player3", "player3",
+					"player3", "player3", "player3", "player3", "player3"],
+			"sets":[ "fruits", "fruits", "fruits", "fruits", "fruits", "animals", "animals", "animals", "animals", "animals", 
+				   "food", "food", "food", "food", "food", "vehicles", "vehicles", "vehicles", "vehicles", "vehicles",
+				   "tools", "tools", "tools", "tools", "tools",
+				   "fruits", "fruits", "fruits", "fruits", "fruits", "animals", "animals", "animals", "animals", "animals", 
+				   "food", "food", "food", "food", "food", "vehicles", "vehicles", "vehicles", "vehicles", "vehicles",
+				   "tools", "tools", "tools", "tools", "tools",
+				   "fruits", "fruits", "fruits", "fruits", "fruits", "animals", "animals", "animals", "animals", "animals", 
+				   "food", "food", "food", "food", "food", "vehicles", "vehicles", "vehicles", "vehicles", "vehicles",
+				   "tools", "tools", "tools", "tools", "tools"],
+			"spielpunkte":[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+					  	   0,0,0,0,0]
+			};
+			JS = JSON.stringify(objects);
+			localStorage.setItem("statistik", JS);
+		}
+		
+}
+
 
