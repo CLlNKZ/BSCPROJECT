@@ -99,7 +99,13 @@ function CreateTableStatistik(){
 				   "fruits", "fruits", "fruits", "fruits", "fruits", "animals", "animals", "animals", "animals", "animals", 
 				   "food", "food", "food", "food", "food", "vehicles", "vehicles", "vehicles", "vehicles", "vehicles",
 				   "tools", "tools", "tools", "tools", "tools"],
-			"spielpunkte":[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			"spielpunkte":[ 0,0,0,0,0,0,0,0,0,0,
+						   0,0,0,0,0,0,0,0,0,0,
+						   0,0,0,0,0,0,0,0,0,0,
+						   0,0,0,0,0,0,0,0,0,0,
+						   0,0,0,0,0,0,0,0,0,0,
+						   0,0,0,0,0,0,0,0,0,0,
+						   0,0,0,0,0,0,0,0,0,0,
 					  	   0,0,0,0,0]
 			};
 			JS = JSON.stringify(objects);
