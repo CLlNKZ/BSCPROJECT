@@ -18,7 +18,7 @@ body {
 
 .startseitebutton {
     position: absolute;
-    left: 52.5%;
+    left: 62.5%;
     top: 10%;
 	display: inline-block;
     cursor: none;	
@@ -33,13 +33,13 @@ body {
     text-shadow: 2px 2px 2px black;
     background-color: #ff802c;
     color: #fff5f3;
-    width: 45%;
+    width: 35%;
     height: 35%;
 }
 
 .neustartbutton {
     position: absolute;
-    left: 52.5%;
+    left: 62.5%;
     top: 55%;
     display: inline-block;
     cursor: none;	
@@ -54,7 +54,7 @@ body {
     text-shadow: 2px 2px 2px black;
     background-color: #ff802c;
     color: #fff5f3;
-    width: 45%;
+    width: 35%;
     height: 35%;
 }
 
@@ -62,7 +62,7 @@ body {
 	text-decoration: underline;
     position: absolute;
 	text-align:center;
-	right: 67.5%;
+	left: 42.5%;
     font: 10vh Arial, sans-serif;
     color: #fff5f3;
 	text-shadow: 2px 2px 2px black;
@@ -73,8 +73,19 @@ body {
 	text-decoration: none;
     position: absolute;
 	text-align:center;
-	right: 67.5%;
-	top: 20%;
+	left: 35%;
+	top: 30%;
+    font: 10vh Arial, sans-serif;
+    color: #fff5f3;
+	text-shadow: 2px 2px 2px black;
+}
+
+.versuche2{
+	text-decoration: none;
+    position: absolute;
+	text-align:center;
+	left: 42.5%;
+	top: 45%;
     font: 10vh Arial, sans-serif;
     color: #fff5f3;
 	text-shadow: 2px 2px 2px black;
@@ -83,6 +94,6 @@ body {
 .ausrichtung_bild{
 	position: absolute;
 	text-align:center;
-	right: 55%;
+	left: 55%;
 	top: 35%;
 }
