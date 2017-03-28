@@ -37,7 +37,7 @@ function statistikWerte(){
 		var einstellungen_herausholen = localStorage.getItem("einstellungen");
 		obj = JSON.parse(einstellungen_herausholen);
 		var bildset = obj.set;
-		var spieler = obj.name;
+		spieler = obj.name;
 		var erstes_mal_in_schleife = 0;
 		
 		var set_statistik_tabelle = localStorage.getItem("statistik");
@@ -48,10 +48,10 @@ function statistikWerte(){
 			//Wenn das erste mal in der Schleife
 					if(erstes_mal_in_schleife == 0){
 					wert5 = statistik_tabelle.spielpunkte[b];
-					wert4 = statistik_tabelle.spielpuntke[b+1];
-					wert3 = statistik_tabelle.spielpuntke[b+2];
-					wert2 = statistik_tabelle.spielpuntke[b+3];
-					wert1 = statistik_tabelle.spielpuntke[b+4];
+					wert4 = statistik_tabelle.spielpunkte[b+1];
+					wert3 = statistik_tabelle.spielpunkte[b+2];
+					wert2 = statistik_tabelle.spielpunkte[b+3];
+					wert1 = statistik_tabelle.spielpunkte[b+4];
 					erstes_mal_in_schleife = 1;
 					}
 			}

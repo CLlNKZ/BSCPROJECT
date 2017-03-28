@@ -16,14 +16,15 @@
     <script type="text/javascript" src="js/statistik.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-		
+			
+			statistikWerte();
             // prepare chart data
             var  sampleData = [
-                    { Datum:'Play1', Spieler1:9},
-                    { Datum:'Play2', Spieler1:15},
-                    { Datum:'Play3', Spieler1:10},
-                    { Datum:'Play4', Spieler1:11},
-                    { Datum:'Play5', Spieler1:9},
+                    { Spiel:'1', Versuche:wert1},
+                    { Spiel:'2', Versuche:wert2},
+                    { Spiel:'3', Versuche:wert3},
+                    { Spiel:'4', Versuche:wert4},
+                    { Spiel:'5', Versuche:wert5},
                 ];
 				
             // prepare jqxChart settings
@@ -35,7 +36,7 @@
                 source: sampleData,
                 xAxis:
                 {
-                    dataField: 'Datum',
+                    dataField: 'Spiel',
                     gridLines: {visible: false},
                     tickMarks: {visible: false}
                 },
@@ -52,7 +53,7 @@
                             columnsGapPercent: 30,
                             seriesGapPercent: 10,
                             series: [
-                                    { dataField: 'Spieler1', displayText: ''},
+                                    { dataField: 'Versuche', displayText: ''},
                                 ]
                         }
                     ]
