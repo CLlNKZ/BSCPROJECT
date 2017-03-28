@@ -32,3 +32,29 @@ function besterUndLetzterVersuch(){
 		document.getElementById("best").innerHTML = besterVersuch;
 		
 }
+
+function statistikWerte(){
+		var einstellungen_herausholen = localStorage.getItem("einstellungen");
+		obj = JSON.parse(einstellungen_herausholen);
+		var bildset = obj.set;
+		var spieler = obj.name;
+		var erstes_mal_in_schleife = 0;
+		
+		var set_statistik_tabelle = localStorage.getItem("statistik");
+		statistik_tabelle = JSON.parse(set_statistik_tabelle);
+						
+		for(b = 0; b < statistik_tabelle.names.length; b++){
+			if(statistik_tabelle.names[b] == spieler && statistik_tabelle.sets[b] == bildset){
+			//Wenn das erste mal in der Schleife
+					if(erstes_mal_in_schleife == 0){
+					wert5 = statistik_tabelle.spielpunkte[b];
+					wert4 = statistik_tabelle.spielpuntke[b+1];
+					wert3 = statistik_tabelle.spielpuntke[b+2];
+					wert2 = statistik_tabelle.spielpuntke[b+3];
+					wert1 = statistik_tabelle.spielpuntke[b+4];
+					erstes_mal_in_schleife = 1;
+					}
+			}
+		}
+		
+}

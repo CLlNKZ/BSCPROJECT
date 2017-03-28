@@ -19,17 +19,17 @@
 		
             // prepare chart data
             var  sampleData = [
-                    { Datum:'Play1', Spieler1:30},
-                    { Datum:'Play2', Spieler1:25},
-                    { Datum:'Play3', Spieler1:30},
-                    { Datum:'Play4', Spieler1:35},
-                    { Datum:'Play5', Spieler1:20},
+                    { Datum:'Play1', Spieler1:9},
+                    { Datum:'Play2', Spieler1:15},
+                    { Datum:'Play3', Spieler1:10},
+                    { Datum:'Play4', Spieler1:11},
+                    { Datum:'Play5', Spieler1:9},
                 ];
 				
             // prepare jqxChart settings
             var settings = {
-                title: "",
-                //description: "Time spent in vigorous exercise",
+                title: "Anzahl der Versuche",
+                description: "",
                 //padding: { left: 5, top: 5, right: 5, bottom: 5 },
                 //titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
                 source: sampleData,
@@ -37,12 +37,12 @@
                 {
                     dataField: 'Datum',
                     gridLines: {visible: false},
-                    tickMarks: {visible: true}
+                    tickMarks: {visible: false}
                 },
                 valueAxis:
                 {	minValue: 0,
                     unitInterval: 5,
-                    title: {text: 'Anzahl der Versuche'}
+                    title: {text: ''}
                 },
                 colorScheme: 'scheme01',
                 seriesGroups:
@@ -52,7 +52,7 @@
                             columnsGapPercent: 30,
                             seriesGapPercent: 10,
                             series: [
-                                    { dataField: 'Spieler1', displayText: 'Spieler1'},
+                                    { dataField: 'Spieler1', displayText: ''},
                                 ]
                         }
                     ]
