@@ -192,21 +192,47 @@ for (i=0; i < feldanzahl; i++) {
 		//Abfragen welche Einstellungen ausgewählt sind wird schon am Anfang
 		var set_selected_spielerstatus = localStorage.getItem("spielerstatus");
 		selected_status = JSON.parse(set_selected_spielerstatus);
+		//Die Tabelle Statistik laden, damit wir später wenn das Spiel fertig ist, Punkte speichern können
+		var set_statistik_tabelle = localStorage.getItem("statistik");
+		statistik_tabelle = JSON.parse(set_statistik_tabelle);
 		
 		var richtige_Stelle_im_Array;
 		for (i = 0; i < selected_status.selected.length; i++) {
     		if(selected_status.selected[i] == "true"){
+				var erstes_mal_in_schleife = 0; //hier wird der Wert auf 0 gesetzt um später in Statistik richtig zuzuordnen
 				selected_status.status[i] += 1; //erhöhe status um 1 bei jeder Runde
 				selected_status.punkte[i] += anzahl_versuche;
 				if(selected_status.status[i] >= 3){ //sobald die dritte Runde fertig gespielt wurde
 					selected_status.status[i] = 0; //setze status auf 0
 					//alert(selected_status.punkte[i]);
 					if(selected_status.besterVersuch[i] > selected_status.punkte[i] || selected_status.besterVersuch[i] == 0){	
-					selected_status.besterVersuch[i] = selected_status.punkte[i]; //Speichere den besten Versuch
+					selected_status.besterVersuch[i] = selected_status.punkte[i]; //Speichere den besten Versuch ab
 					}
-					selected_status.punkte[i] = 0; //setze Punkte auch wieder auf 0
+					
+						//Speichere die Punkte bevor sie auf 0 gestellt werden in die Statistiktabelle
+						//Daher müssen wir die ganze Statistiktabelle durchsuchen, wo der Name und das Set übereinstimmen
+						//Nachdem er durch das true hier sowieso nur einmal hereinkommt
+						for(b = 0; b < statistik_tabelle.names.length; b++){
+							if(statistik_tabelle.names[b] == playernr && statistik_tabelle.sets[b] == bildset){
+								//Wenn das erste mal in der Schleife
+								if(erstes_mal_in_schleife == 0){
+								//Schiebe das Array nach rechts um 4 Werte
+								statistik_tabelle.spielpunkte[b+4] = statistik_tabelle.spielpunkte[b+3];
+								statistik_tabelle.spielpunkte[b+3] = statistik_tabelle.spielpunkte[b+2];
+								statistik_tabelle.spielpunkte[b+2] = statistik_tabelle.spielpunkte[b+1];
+								statistik_tabelle.spielpunkte[b+1] = statistik_tabelle.spielpunkte[b];
+								//Schreibe neuen Datensatz in das erste Array //An erster Stelle steht nun letzer Versuch
+								statistik_tabelle.spielpunkte[b] = selected_status.punkte[i];
+								erstes_mal_in_schleife = 1;
+								}
+							}
+						}
+					
+					selected_status.punkte[i] = 0; //setze Punkte auch wieder auf 0 für das nächste Spiell
 					selecting = JSON.stringify(selected_status);
 					localStorage.setItem("spielerstatus", selecting);
+					selecting_statistik = JSON.stringify(statistik_tabelle);
+					localStorage.setItem("statistik", selecting_statistik);
 					window.document.location.href = "endbildschirm.html";
 				}
 				else{

@@ -13,35 +13,37 @@
     <script type="text/javascript" src="jq/jqxchart.js"></script>
     <script type="text/javascript" src="jq/jqxdraw.js"></script>
     <script type="text/javascript" src="jq/jqxdata.js"></script>
+    <script type="text/javascript" src="js/statistik.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-		
+			
+			statistikWerte();
             // prepare chart data
             var  sampleData = [
-                    { Datum:'Play1', Spieler1:30},
-                    { Datum:'Play2', Spieler1:25},
-                    { Datum:'Play3', Spieler1:30},
-                    { Datum:'Play4', Spieler1:35},
-                    { Datum:'Play5', Spieler1:20},
+                    { Spiel:'1', Versuche:wert1},
+                    { Spiel:'2', Versuche:wert2},
+                    { Spiel:'3', Versuche:wert3},
+                    { Spiel:'4', Versuche:wert4},
+                    { Spiel:'5', Versuche:wert5},
                 ];
 				
             // prepare jqxChart settings
             var settings = {
-                title: "",
-                //description: "Time spent in vigorous exercise",
+                title: "Anzahl der Versuche",
+                description: "",
                 //padding: { left: 5, top: 5, right: 5, bottom: 5 },
                 //titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
                 source: sampleData,
                 xAxis:
                 {
-                    dataField: 'Datum',
+                    dataField: 'Spiel',
                     gridLines: {visible: false},
-                    tickMarks: {visible: true}
+                    tickMarks: {visible: false}
                 },
                 valueAxis:
                 {	minValue: 0,
                     unitInterval: 5,
-                    title: {text: 'Anzahl der Versuche'}
+                    title: {text: ''}
                 },
                 colorScheme: 'scheme01',
                 seriesGroups:
@@ -51,7 +53,7 @@
                             columnsGapPercent: 30,
                             seriesGapPercent: 10,
                             series: [
-                                    { dataField: 'Spieler1', displayText: 'Spieler1'},
+                                    { dataField: 'Versuche', displayText: ''},
                                 ]
                         }
                     ]
@@ -65,13 +67,13 @@
     </head>
     <body>
     <div><a class="statistik">Statistik</a></div>
-    <div id='chartContainer' style="width: 60%; height: 60vh"></div>
+    <div id='chartContainer' style="width: 60%; height: 65vh"></div>
 	 
-    <div class="schrift1">Letzer Versuch:</div>
-    <div class="schrift2">Bester Versuch:</div>
-<div>
+    <!--<div class="schrift1">Letzer Versuch: <span id="last"></span></div>-->
+    <div class="schrift2">Bester Versuch: <span id="best"></span></div>
+	<div>
             <div>
-                <a class="löschenbutton">Löschen</a>
+                <a class="löschenbutton" onClick="datenloeschen()">Löschen</a>
 
             </div>
             <div>
@@ -79,5 +81,8 @@
 
             </div>
         </div>
+    <script>
+	besterUndLetzterVersuch();
+	</script>
     </body>
 </html>

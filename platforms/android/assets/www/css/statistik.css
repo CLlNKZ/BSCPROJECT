@@ -74,7 +74,7 @@ body {
     position: absolute;
 	text-align:center;
 	left: 2.5%;
-	top: 80%;
+	top: 75%;
     font: 8vh Arial, sans-serif;
     color: #fff5f3;
 	text-shadow: 2px 2px 2px black;
@@ -84,9 +84,14 @@ body {
 	text-decoration: none;
     position: absolute;
 	text-align:center;
-	left: 2.5%;
-	top: 90%;
+	left: 16%;
+	top: 82.5%;
     font: 8vh Arial, sans-serif;
     color: #fff5f3;
 	text-shadow: 2px 2px 2px black;
-}.chartContainer{	position: absolute;	top: 14vh;	left: 1vw;}
+}
+.chartContainer{
+	position: absolute;
+	top: 15vh;
+	left: 1vw;
+}
